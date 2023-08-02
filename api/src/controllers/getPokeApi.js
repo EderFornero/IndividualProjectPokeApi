@@ -80,7 +80,7 @@ const getPokeById = async (id) => {
         return t.type.name;
       })
     } 
-    await Pokemon.create(pokemon);
+
     return pokemon;
 
 
