@@ -8,12 +8,12 @@ function Main() {
    const showNav = location.pathname !== '/';
 
   return (
-    <div>
+    <>
         {
             showNav && <Nav />
         }
         <Outlet />
-    </div>
+    </>
   )
 }
 

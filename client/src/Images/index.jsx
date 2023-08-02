@@ -1,1 +1,1 @@
-export {default as backgroundImage} from './background_image.jpeg'  
+export {default as backgroundImage} from './pikachuBg.webp';

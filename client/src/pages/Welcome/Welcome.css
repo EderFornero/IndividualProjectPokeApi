@@ -1,0 +1,53 @@
+*{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.div-container{
+  display: flex;
+  justify-content: center;
+}
+
+.background-image{
+  display: flex;
+  justify-content: left;
+  min-width: 100%;
+  min-height: 100vh;
+  background: url('../../Images/pikachuBg.webp');
+  object-fit: cover;
+}
+
+.div-button{
+  z-index: 99;
+  width: 50%;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-link{
+  border: none;
+  outline: none;
+  background: none; 
+}
+
+.link-tag-button{
+  font-family: PokeFont;
+  font-size: 40px;
+  text-decoration: none;
+  color: rgb(207, 203, 203);
+}
+
+
+.link-tag-button:hover{
+  color: #FFFF00;
+  text-decoration: underline;
+}
+
+
+
+@font-face {
+  font-family: PokeFont;
+  src: url('../../Fonts/Pokemon\ Solid.ttf');
+}

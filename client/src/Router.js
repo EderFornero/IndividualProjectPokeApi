@@ -1,7 +1,12 @@
 import './App.css';
+//main
 import Main from './Layout/Main';
+//error component
 import NotFound from './pages/NotFound';
-import Welcome from './pages/Welcome/Welcome.jsx'
+//pages
+import Welcome from './pages/Welcome/Welcome.jsx';
+import Home from './pages/Home/Home';
+
 import {
   createBrowserRouter
 } from 'react-router-dom'
@@ -16,6 +21,15 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Welcome /> 
+      },
+      {
+        path: 'home',
+        children: [
+          {
+            index: true,
+            element: <Home />
+          }
+        ]
       }
     ]
   }
