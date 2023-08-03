@@ -1,1 +1,1 @@
-export {default as backgroundImage} from './pikachuBg.webp';
+export {default as pokeImage} from './pokemon.png';
