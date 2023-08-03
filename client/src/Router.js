@@ -2,7 +2,7 @@ import './App.css';
 //main
 import Main from './Layout/Main';
 //error component
-import NotFound from './pages/NotFound';
+import NotFound from './pages/NotFound/NotFound.jsx';
 //pages
 import Welcome from './pages/Welcome/Welcome.jsx';
 import Home from './pages/Home/Home';

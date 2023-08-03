@@ -1,6 +1,6 @@
 import React from "react";
 //components
-import Cards from "../../components/Cards/Cards";
+
 
 function Home() {
 
