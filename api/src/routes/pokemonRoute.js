@@ -69,7 +69,18 @@ router
 router.post("/", async (req, res) => {
     try {
 
-        const { name, health_points, image, attack, defense, height, weight, speed ,types } = req.body;
+        const { name, health_points, image, attack, defense, height, weight, speed, types } = req.body;
+        
+        //return missing data if 
+        const missingData = 'Missing data'; 
+
+        if(!name || !health_points || !image || !attack || !defense || !types){
+          return res.status(400).send(missingData); 
+        } 
+     
+
+        //return missing data if types is an empty array
+        if(!types.length) return res.status(400).send(missingData); 
 
         const newPokemon = await Pokemon.create({
           name,
@@ -82,9 +93,17 @@ router.post("/", async (req, res) => {
           image, 
         });
         
-        await newPokemon.setTypes(types);
+        const pokeValidate = await Type.findAll({
+          where: {
+            name: types
+          }
+        })
+        await newPokemon.setTypes(pokeValidate);
     
-        res.status(201).json(newPokemon);
+        res.status(201).json({
+          message: "Pokemon successfuly created",
+          new_pokemon: newPokemon
+        });
       } catch (error) {
         res.status(400).json({ error: error.message });
       }

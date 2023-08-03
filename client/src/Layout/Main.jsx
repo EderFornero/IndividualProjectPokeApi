@@ -17,7 +17,9 @@ function Main() {
     `)
     try {
       if(data.name){
-        console.log("Pokemon", data)
+        
+        setPokemon(data)
+        console.log("Pokemon", data);
       }else{
         setPokemon(null)
       }
@@ -29,20 +31,18 @@ function Main() {
 
   //random pokemon (extra function)
 
-  const addRandomPoke = async (name) => {
+  const addRandomPoke = async () => {
   try {
-    const {data} = await axios(`
-    http://localhost:3001/pokemon/${name}
-  `)
-    if(data.name){
-      const randomPokeName = [data.name]; 
-      const pickRandomPokeName = randomPokeName[Math.floor(Math.random() * randomPokeName.length)]
+      const {data} = await axios(`http://localhost:3001/pokemon/`);
+
+      //search in data array
+      const pickRandomPokeName = data[Math.floor(Math.random() * data.length)]
+     
+      setPokemon(pickRandomPokeName)
       console.log("Random poke", pickRandomPokeName);
-    }else{
-      setPokemon(null); 
-    }
+  
   } catch (error) {
-    setPokemon(null);
+  return{error: error.message}
   }
    
   }
