@@ -1,23 +1,24 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-const SearchBar = ({onSearch}) => {
-  //manage the value of the term (name on search function) with a new state
-  const [term, setTerm] = useState(''); 
+const SearchBar = ({handleOnSubmit}) => {
 
-  const handleOnSearch = (e) => {
-    e.preventDefault();
-    onSearch(term); 
-  }
+  //state for input value
+  const [pokemon, setPokemon] = useState("");
   
+  //get input value
+  const handleOnChange = (e) => {
+    setPokemon(e.target.value); 
+  }
+
   return (
     <div>
     <input
       type="text"
-      value={term}
-      onChange={(e) => setTerm(e.target.value)}
+      value={pokemon}
+      onChange={handleOnChange}
       placeholder="Search a Pokemon, example: ditto"
     />
-    <button onClick={handleOnSearch}>Search</button>
+    <button onClick={(e) => handleOnSubmit(e, pokemon)}>Search</button>
   </div>
   )
 }

@@ -1,60 +1,45 @@
-import React from 'react'
+import React, {useState} from 'react'
 //react router 
 import { Outlet, useLocation } from 'react-router-dom';
 //components 
 import Nav from '../components/Nav/Nav';
-//axios
-// import axios from 'axios'; 
+//react redux
+import {useDispatch} from 'react-redux'; 
+//actions
+import {getPokeByName} from '../redux/actions/index';
 
 function Main() {
- 
-  // const [pokemon, setPokemon] = useState(null);
 
-  // //function onSearch going to passed by params to nav
-  // const onSearch = async (name) => { 
-  //   const {data} = await axios(`
-  //     http://localhost:3001/pokemon/${name.toLowerCase()}
-  //   `)
-  //   try {
-  //     if(data.name){
-        
-  //       setPokemon(data)
-  //       console.log("Pokemon", data);
-  //     }else{
-  //       setPokemon(null)
-  //     }
-  //   } catch (error) {
-  //     alert(`Error fetching ${pokemon}: ${error.message}`);
-  //     setPokemon(null);
-  //   }
-  // }
+  const dispatch = useDispatch(); 
+  const [searchPokemon, setSearchPokemon] = useState(""); //set state of search
 
-  //random pokemon (extra function)
-
-  // const addRandomPoke = async () => {
-  // try {
-  //     const {data} = await axios(`http://localhost:3001/pokemon/`);
-
-  //     //search in data array
-  //     const pickRandomPokeName = data[Math.floor(Math.random() * data.length)]
-     
-  //     setPokemon(pickRandomPokeName)
-  //     console.log("Random poke", pickRandomPokeName);
+  //search by name
+  const handleOnSubmit = async (e) => {
+    e.preventDefault(); 
+    try {
+      const res = await dispatch(getPokeByName(searchPokemon));
+      console.log(res);
   
-  // } catch (error) {
-  // return{error: error.message}
-  // }
-   
-  // }
-  
-  //using use location
+      if(res.payload && res.payload.length === 0){
+      console.log(`That pokemon ${searchPokemon} do not exist`);
+      }
+      setSearchPokemon(""); 
+
+    }catch (error) {
+      console.log('Error: ', error.message);
+      setSearchPokemon(""); 
+  }
+}
+
+
+  //use location
   const location = useLocation(); 
   const showNav = location.pathname !== '/';
 
   return (
     <>
         {
-            showNav && <Nav />
+            showNav && <Nav handleOnSubmit={handleOnSubmit}/>
         }
         <Outlet />
     </>
