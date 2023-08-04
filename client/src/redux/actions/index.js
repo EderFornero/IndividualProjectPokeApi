@@ -14,6 +14,8 @@ export const getPokemons = () => {
   }
 }; 
 
+
+
 ///////////////////////////////////////////////////////////////////////////////////////
 
 export const getPokeByName = (name) => {
@@ -21,11 +23,7 @@ export const getPokeByName = (name) => {
     try {
       const {data} = await axios(`http://localhost:3001/pokemon?name=${name}`) //get through query
 
-      if(!data){
-        console.log("No data recived for the API");
-      }
-   
-      //verify length
+      // verify length
       if(data.length === 0){
         return{
           //return type not found 
@@ -34,16 +32,20 @@ export const getPokeByName = (name) => {
           payload: []
         }
       } //end if
-   
+
+      if(name.length === 0) throw Error('Must have a name')
+     
+      console.log(data);
       return dispatch({
         //select type
         type: GET_POKEMON_NAME,
         //response with a name of pokemon
-        payload: data
+        payload: [data]
       })
+   
 
     } catch (error) {
-      throw Error("Pokemon not found", error.message);  
+      alert("Pokemon not found", error.message);  
     }
   }
 }

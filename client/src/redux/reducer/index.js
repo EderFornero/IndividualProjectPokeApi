@@ -1,4 +1,4 @@
-import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL} from '../actions-types/index'; 
+import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, CLEAR} from '../actions-types/index'; 
 
 const initialState = {
   allPokemons: [], 
@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
         ...state, 
         getDetail: action.payload,
       }
-
+      
       default: 
       return{
         ...state,

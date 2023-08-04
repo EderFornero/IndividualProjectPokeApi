@@ -12,14 +12,14 @@ function Home() {
   const dispatch = useDispatch(); 
   
   const allPokemons = useSelector(state => state.allPokemons) //extract data from the redux store state
-
+ 
   //loader
   const [loading, setLoading] = useState(false);
 
   //mounting the component
   useEffect(() => {
     setLoading(true)
-   dispatch(getPokemons())
+      dispatch(getPokemons())
   }, [dispatch])
 
   //set 2 seconds for charge API info
@@ -27,14 +27,14 @@ function Home() {
     setLoading(false)
    }, 2000);
 
-  
+ 
   
   return (
     <div>
       {
         loading ? <Loader /> 
         :
-        <Cards allPokemons={allPokemons}/> 
+        <Cards allPokemons={allPokemons}/>
       }
     </div>
   );

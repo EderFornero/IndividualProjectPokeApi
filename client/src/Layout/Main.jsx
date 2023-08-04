@@ -11,23 +11,23 @@ import {getPokeByName} from '../redux/actions/index';
 function Main() {
 
   const dispatch = useDispatch(); 
-  const [searchPokemon, setSearchPokemon] = useState(""); //set state of search
+  // const [searchPokemon, setSearchPokemon] = useState(""); //set state of search
 
   //search by name
-  const handleOnSubmit = async (e) => {
+  const handleOnSubmit = async (e, name) => {
     e.preventDefault(); 
     try {
-      const res = await dispatch(getPokeByName(searchPokemon));
-      console.log(res);
-  
+      const res = await dispatch(getPokeByName(name));
+      console.log("res", res);
+      console.log("payload", res.payload);
+      
       if(res.payload && res.payload.length === 0){
-      console.log(`That pokemon ${searchPokemon} do not exist`);
+      console.log(`That pokemon ${name} do not exist`);
       }
-      setSearchPokemon(""); 
-
+      // setSearchPokemon("")
     }catch (error) {
       console.log('Error: ', error.message);
-      setSearchPokemon(""); 
+      // setSearchPokemon(""); 
   }
 }
 
@@ -39,7 +39,7 @@ function Main() {
   return (
     <>
         {
-            showNav && <Nav handleOnSubmit={handleOnSubmit}/>
+          showNav && <Nav handleOnSubmit={handleOnSubmit} />
         }
         <Outlet />
     </>

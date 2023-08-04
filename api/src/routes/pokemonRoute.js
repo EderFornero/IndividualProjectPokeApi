@@ -5,7 +5,6 @@ const {Pokemon, Type} = require('../db');
 router
 .get("/", async(req, res) => { 
     //do search twice (getAll & byName)
-    
     try {
         const {name} = req.query;
         if(name){
@@ -16,10 +15,9 @@ router
             //if exist an error property were not found in API
             if(pokemon.error){
                 pokemon = await getPokeByDbName(name);
-
                 //if pokemon does not exist return 404
                 if(!pokemon){
-                    res.status(404).send({"message": `Pokemon ${name} does not exist`}); 
+                    return res.status(404).json({"message": `Pokemon ${name} does not exist`});
                 };
             };
             
@@ -33,7 +31,7 @@ router
         return res.status(200).json([...allPokemosDb, ...allPokemons]); 
 
     } catch (error) {
-        res.status(500).send({error: error.message}); 
+        return res.status(500).send({error: error.message}); 
     }
 })
 

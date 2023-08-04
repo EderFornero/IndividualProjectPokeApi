@@ -10,7 +10,7 @@ function Cards({ allPokemons }) {
       <div className="div-cards">
         {
         allPokemons && allPokemons.map((poke) => (
-          <Card key={poke.id} poke={poke}/>
+          <Card key={poke.id} poke={poke} />
         ))}
         </div>
     </div>
