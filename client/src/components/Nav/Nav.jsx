@@ -2,6 +2,7 @@ import React from 'react'
 //components
 import SearchBar from '../SearchBar/SearchBar' 
 import TypeFilter from '../TypeFilter/TypeFilter';
+import OriginFilter from '../OriginFilter/OriginFilter';
 //router
 import { Link } from 'react-router-dom';
 //css
@@ -10,7 +11,7 @@ import './Nav.css'
 import { useDispatch } from 'react-redux';
 //actions
 import {getPokeByName} from '../../redux/actions/index';
-import { TYPE_FILTER } from '../../redux/actions-types';
+
 
 function Nav() {
 
@@ -40,6 +41,7 @@ function Nav() {
       <div className='div-search-nav'>
       <SearchBar handleOnSubmit={handleOnSubmit} />
       <TypeFilter />
+      <OriginFilter />
       </div>
       
     </div>

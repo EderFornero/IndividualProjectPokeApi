@@ -4,6 +4,7 @@ import {
   GET_DETAIL,
   GET_TYPES,
   TYPE_FILTER,
+  ORIGIN_FILTER,
 } from "../actions-types/index";
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
 
   /////////////filter/////////////
   filteredTypes: "all",
+  filteredOrigin: "all"
 };
 
 const reducer = (state = initialState, action) => {
@@ -65,18 +67,35 @@ const reducer = (state = initialState, action) => {
           filteredTypes: action.payload,
           allPokemons: filtered,
         };
-        // return{
-        //   ...state,
-        //   filteredTypes: action.payload,
-        //   allPokemons: state.copyAllPokemons.filter((pokemon) => {
-        //   return pokemon.types.some((t) => t.name === action.payload);
-        // })
-        // }
       }
+
+    case ORIGIN_FILTER: 
+
+    const originFrom = action.payload;
+    let filtered = [];
+    
+      if (originFrom === "all") {
+        filtered = state.copyAllPokemons;
+      } else {
+        const isOriginNumeric = originFrom === "numeric";
+        filtered = state.copyAllPokemons.filter((p) => {
+          const isNumericId = typeof p.id === "number";
+          return isOriginNumeric === isNumericId;
+        });
+      }
+
+   
+
+    return{
+      ...state,
+      filteredOrigin: originFrom, 
+      allPokemons: filtered,
+    }
 
     default:
       return {
         ...state,
+
       };
   }
 };
