@@ -8,7 +8,6 @@ const SearchBar = ({handleOnSubmit}) => {
   //get input value
   const handleOnChange = (e) => {
     setPokemon(e.target.value); 
-    console.log(e.target.value);
   }
 
   return (

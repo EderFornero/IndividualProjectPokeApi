@@ -1,7 +1,9 @@
 import axios from 'axios';
-import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, NOT_FOUND} from '../actions-types/index'; 
+import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, TYPE_FILTER, NAME_FILTER, ORIGIN_FILTER} from '../actions-types/index'; 
 
 
+///////////////////////////////////////////////////////////////////////////////////////
+//get all pokemons
 export const getPokemons = () => {
   return async function(dispatch){
     const {data} = await axios("http://localhost:3001/pokemon") //get pokemons from backend
@@ -17,25 +19,14 @@ export const getPokemons = () => {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
-
+//get name search by query
 export const getPokeByName = (name) => {
   return async function(dispatch){
     try {
       const {data} = await axios(`http://localhost:3001/pokemon?name=${name}`) //get through query
 
-      // verify length
-      if(data.length === 0){
-        return{
-          //return type not found 
-          type: NOT_FOUND,
-          //get []
-          payload: []
-        }
-      } //end if
-
       if(name.length === 0) throw Error('Must have a name')
      
-      console.log(data);
       return dispatch({
         //select type
         type: GET_POKEMON_NAME,
@@ -51,11 +42,11 @@ export const getPokeByName = (name) => {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-
+//get detail by id
 export const getDetail = (id, setIsValid) => {
   return async function(dispatch){
     try {
-      const {data} = axios(`http://localhost:3001/pokemon/${id}`) //get by id for show detail 
+      const {data} = await axios(`http://localhost:3001/pokemon/${id}`) //get by id for show detail 
       dispatch({
         //select type
         type: GET_DETAIL,
@@ -68,8 +59,51 @@ export const getDetail = (id, setIsValid) => {
     } catch (error) {
       //set false state & throw error
       //then handle it in detail view/page
-      setIsValid(false, alert(error.message));
+      setIsValid(false);
+      console.log(error.message);
     }
   }
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+//get all types
+export const getTypes = () => {
+  return async function(dispatch){
+    try {
+      const {data} = await axios('http://localhost:3001/type')
+      return dispatch({ 
+        type: GET_TYPES, 
+        payload: data
+      })
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//filter by type
+export const filterByType = (type) => { 
+  return{
+    type: TYPE_FILTER,
+    payload: type
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//filter by pokemon by origin
+export const filterByPokemonOrigin = (pokemonOrigin) => { 
+  return{
+    type: ORIGIN_FILTER,
+    payload: pokemonOrigin
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//order by name
+export const orderByPokemonName = (name) => { 
+  return{
+    type: NAME_FILTER,
+    payload: name
+  }
+}

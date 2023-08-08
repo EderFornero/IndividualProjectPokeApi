@@ -1,8 +1,9 @@
-import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, CLEAR} from '../actions-types/index'; 
+import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES} from '../actions-types/index'; 
 
 const initialState = {
   allPokemons: [], 
   getDetail: {}, 
+  getTypes: [],
 }
 
 
@@ -26,6 +27,13 @@ const reducer = (state = initialState, action) => {
         getDetail: action.payload,
       }
       
+    case GET_TYPES: 
+    return{
+      ...state,
+      getTypes: action.payload
+    }
+
+
       default: 
       return{
         ...state,

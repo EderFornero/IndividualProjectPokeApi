@@ -1,0 +1,10 @@
+.div-contain-cards{
+  width: 100%;
+  min-height: 100vh;
+}
+
+.div-cards{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
