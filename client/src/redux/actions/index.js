@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, TYPE_FILTER, NAME_FILTER, ORIGIN_FILTER} from '../actions-types/index'; 
+import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, TYPE_FILTER, ORIGIN_FILTER, ATTACK_ORDER, NAME_ORDER} from '../actions-types/index'; 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -92,10 +92,10 @@ export const filterByType = (type) => {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //filter by pokemon by origin
-export const filterByPokemonOrigin = (pokemonOrigin) => { 
+export const filterByPokemonOrigin = (origin) => { 
   return{
     type: ORIGIN_FILTER,
-    payload: pokemonOrigin
+    payload: origin
   }
 }
 
@@ -103,7 +103,16 @@ export const filterByPokemonOrigin = (pokemonOrigin) => {
 //order by name
 export const orderByPokemonName = (name) => { 
   return{
-    type: NAME_FILTER,
+    type: NAME_ORDER,
     payload: name
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//order by attack 
+export const orderByPokemonAttack = (attack) => {
+  return{
+    type: ATTACK_ORDER,
+    payload: attack
   }
 }
