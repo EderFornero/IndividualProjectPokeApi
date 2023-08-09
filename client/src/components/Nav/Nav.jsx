@@ -1,8 +1,7 @@
 import React from 'react'
 //components
-import SearchBar from '../SearchBar/SearchBar' 
-import TypeFilter from '../TypeFilter/TypeFilter';
-import OriginFilter from '../OriginFilter/OriginFilter';
+import SearchBar from '../SearchBar/SearchBar.jsx' 
+
 //router
 import { Link } from 'react-router-dom';
 //css
@@ -10,13 +9,18 @@ import './Nav.css'
 //react redux
 import { useDispatch } from 'react-redux';
 //actions
-import {getPokeByName} from '../../redux/actions/index';
+import {getPokeByName, getPokemons} from '../../redux/actions/index';
 
 
 function Nav() {
 
   
   const dispatch = useDispatch(); 
+
+  //get all
+  const handleOnClick = () => {
+    dispatch(getPokemons())
+  }
 
   //search by name
   const handleOnSubmit = async (e, name) => {
@@ -36,12 +40,10 @@ function Nav() {
   return (
     <div className='div-contain-nav'>
       <div className='div-home-nav'>
-      <Link to="/home">Home</Link>
+      <Link to="/home" onClick={handleOnClick}>Home</Link>
       </div>
       <div className='div-search-nav'>
       <SearchBar handleOnSubmit={handleOnSubmit} />
-      <TypeFilter />
-      <OriginFilter />
       </div>
       
     </div>

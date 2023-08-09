@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 //actions
-import { filterByType, getTypes } from '../../redux/actions';
+import { filterPokemonType, getTypes } from '../../redux/actions';
 //react redux
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,7 +9,6 @@ function TypeFilter() {
 
   const dispatch = useDispatch(); 
 
-  const filtered = useSelector((state) => state.filteredTypes); 
   const types = useSelector((state) => state.getTypes);
 
   //charge all types
@@ -20,27 +19,24 @@ function TypeFilter() {
 
 
   const handleFilter = (type) => {
-    dispatch(filterByType(type));
+    dispatch(filterPokemonType(type));
   };
 
   return (
     <div>
-    <h2 className='filtersxd'>Filters</h2>
-    <div  className='type-container'>
+    <h2 className='filters'>Filters</h2>
+    <div>
 
-    <button onClick={() =>
-      handleFilter("all")}
-      className='button-type'>
+    <button onClick={() => handleFilter(null)}>
       All
     </button>
+
+
     {types?.map((type, i) => (
       <button
       key={i}
-      onClick={() =>
-        filtered === type.name ? handleFilter("all") : handleFilter(type.name)}
-        
-        className='button-type'
-        >
+      onClick={() => handleFilter(type.name)}
+      >
         {type.name.toLowerCase()}
       </button>
     ))}

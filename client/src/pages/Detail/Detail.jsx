@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 //react redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { getDetail } from "../../redux/actions/index";
+import { cleanDetail, getDetail } from "../../redux/actions/index";
 //css
 import "./Detail.css";
 
@@ -17,10 +17,14 @@ function Detail() {
 
   //verify if is a valid id
   const [idValid, setIdValid] = useState(true);
+ 
 
   useEffect(() => {
     dispatch(getDetail(id, setIdValid));
+    return dispatch(cleanDetail())
   }, [dispatch, id]);
+
+  //when component is dismount return empty object (dispatch action)
 
   return (
     <>
@@ -34,30 +38,35 @@ function Detail() {
       {idValid && (
         <>
           {/*if id exist show pokemons*/}
+          <div><Link to="/home">GO BACK</Link></div>
           {detail ? (
             <div>
               {/*name*/}
               <div>
                 <p>Name: </p>
-                <h3>{detail.name}</h3>
+                <h3>{detail.name && detail.name}</h3>
+              </div>
+
+              <div>
+                <img src={detail.image && detail.image} alt={detail.name} />
               </div>
 
               {/*hp*/}
               <div>
                 <p>Health Points: </p>
-                <h3>{detail.health_points}</h3>
+                <h3>{detail.health_points && detail.health_points}</h3>
               </div>
 
               {/*attack*/}
               <div>
                 <p>Attack: </p>
-                <h3>{detail.attack}</h3>
+                <h3>{detail.attack && detail.attack}</h3>
               </div>
 
               {/*defense*/}
               <div>
                 <p>Defense: </p>
-                <h3>{detail.defense}</h3>
+                <h3>{detail.defense && detail.defense}</h3>
               </div>
 
               {/*height*/}
@@ -83,11 +92,8 @@ function Detail() {
                 <p>Types:</p>
                 <h3>
                   {Array.isArray(detail.types) &&
-                    detail.types
-                      .map((type) =>
-                        typeof type === "object" ? type.name : type
-                      )
-                      .join(" - ")}
+                    detail.types.map((type) =>
+                    typeof type === "object" ? type.name : type).join(" - ")}
                 </h3>
               </div>
             </div>

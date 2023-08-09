@@ -3,8 +3,10 @@ import {
   GET_POKEMON_NAME,
   GET_DETAIL,
   GET_TYPES,
-  TYPE_FILTER,
-  ORIGIN_FILTER,
+  SET_FILTER,
+  SET_ORDER,
+  SET_TYPE,
+  CLEAN_DETAIL,
 } from "../actions-types/index";
 
 const initialState = {
@@ -14,12 +16,18 @@ const initialState = {
   getTypes: [],
 
   /////////////filter/////////////
-  filteredTypes: "all",
-  filteredOrigin: "all"
+  sort: "nameAsc",
+  filter: "none",
+  type: null,
+
+   /////////////cleaner/////////////
+  
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+//////////////////////////////////////////////////////////
+//get all pokemons
     case GET_POKEMON:
       return {
         ...state,
@@ -27,77 +35,68 @@ const reducer = (state = initialState, action) => {
         copyAllPokemons: action.payload,
       };
 
+//////////////////////////////////////////////////////////
+//get pokemon by name
     case GET_POKEMON_NAME:
       return {
         ...state,
         allPokemons: action.payload,
       };
 
+//////////////////////////////////////////////////////////
+//get pokemon detail
     case GET_DETAIL:
       return {
         ...state,
         getDetail: action.payload,
       };
 
+//////////////////////////////////////////////////////////
+//get all types
     case GET_TYPES:
       return {
         ...state,
         getTypes: action.payload,
       };
 
-    case TYPE_FILTER:
-      if (action.payload === "all") {
-        return {
-          ...state,
-          allPokemons: state.copyAllPokemons,
-          filteredTypes: action.payload,
-        }
-      } else {
-        const filtered = state.copyAllPokemons.filter((pokemon) => {
-          //filter by type from API or type from Database
-          if (typeof pokemon.types[0] === "string") {
-            return pokemon.types.some((type) => type === action.payload);
-          } else {
-            return pokemon.types.some((type) => type.name === action.payload);
-          }
-        })
-
-        return {
-          ...state,
-          filteredTypes: action.payload,
-          allPokemons: filtered,
-        };
+//////////////////////////////////////////////////////////
+//sort by name and attack
+    case SET_ORDER:
+      return{
+        ...state, 
+        sort: action.payload
       }
+     
+//////////////////////////////////////////////////////////
+//filter by origin
+    case SET_FILTER: 
+    return{ 
+      ...state, 
+      filter: action.payload
+    }
 
-    case ORIGIN_FILTER: 
+//////////////////////////////////////////////////////////
+//filter by type 
+    case SET_TYPE: 
+    return{ 
+      ...state, 
+      type: action.payload 
+    }
 
-    const originFrom = action.payload;
-    let filtered = [];
-    
-      if (originFrom === "all") {
-        filtered = state.copyAllPokemons;
-      } else {
-        const isOriginNumeric = originFrom === "numeric";
-        filtered = state.copyAllPokemons.filter((p) => {
-          const isNumericId = typeof p.id === "number";
-          return isOriginNumeric === isNumericId;
-        });
-      }
-
-   
-
-    return{
-      ...state,
-      filteredOrigin: originFrom, 
-      allPokemons: filtered,
+//////////////////////////////////////////////////////////
+//clean detail 
+    case CLEAN_DETAIL: 
+    return{ 
+      ...state, 
+      getDetail: action.payload
     }
 
     default:
       return {
         ...state,
-
       };
   }
 };
+
 
 export default reducer;

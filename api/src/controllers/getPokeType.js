@@ -3,7 +3,7 @@ const { URL_API_TYPE } = process.env;
 const { Type } = require("../db");
 const axios = require("axios");
 
-const getPokeType = async (req, res) => {
+const getPokeType = async (_req, res) => {
   try {
     const findType = await Type.findAll();
 
@@ -16,8 +16,7 @@ const getPokeType = async (req, res) => {
         })
       );
 
-      //-------------------------------bulk instances search ()
-      //-------------------------------await Type.bulkCreate(findType);
+      //send all types
       const findType = await Type.findAll();
       return res.status(200).json(findType);
     } else {

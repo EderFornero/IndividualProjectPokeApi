@@ -25,14 +25,14 @@ const getAllPokeApi = async () => {
         id: poke.id,
         name: poke.name,
         health_points: poke.stats[0].base_stat,
-        image: poke.sprites.other.dream_world.front_default,
+        image: poke.sprites.other["official-artwork"].front_default,
         attack: poke.stats[1].base_stat,
         defense: poke.stats[2].base_stat,
         height: poke.height,
         weight: poke.weight,
         speed: poke.stats[5].base_stat,
         types: poke.types.map((t) => {
-          return t.type.name
+          return {name: t.type.name}
         })
       }
     }))
@@ -51,8 +51,8 @@ const getPokeDb = async () => {
   try {
     const find = await Pokemon.findAll({
       include: {
-        attributes: ["name"],
         model: Type,
+        through: {attributes: []}
       },
     });
     return find;
@@ -70,14 +70,14 @@ const getPokeById = async (id) => {
     const pokemon = {
       name: get.data.name,
       health_points: get.data.stats[0].base_stat,
-      image: get.data.sprites.other.dream_world.front_default,
+      image: get.data.sprites.other["official-artwork"].front_shiny,
       attack: get.data.stats[1].base_stat,
       defense: get.data.stats[2].base_stat,
       height: get.data.height,
       weight: get.data.weight,
       speed: get.data.stats[5].base_stat,
       types: get.data.types.map((t) => {
-        return t.type.name;
+        return {name: t.type.name}
       })
     } 
 
@@ -114,14 +114,14 @@ const getPokeByName = async (name) => {
         id: get.data.id,
         name: get.data.name,
         health_points: get.data.stats[0].base_stat,
-        image: get.data.sprites.other.dream_world.front_default,
+        image: get.data.sprites.other["official-artwork"].front_default,
         attack: get.data.stats[1].base_stat,
         defense: get.data.stats[2].base_stat,
         height: get.data.height,
         weight: get.data.weight,
         speed: get.data.stats[5].base_stat,
         types: get.data.types.map((t) => {
-          return t.type.name;
+          return {name: t.type.name}
         })
       }
       //returned

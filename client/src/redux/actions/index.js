@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, TYPE_FILTER, ORIGIN_FILTER, ATTACK_ORDER, NAME_ORDER} from '../actions-types/index'; 
+import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, SET_ORDER, SET_FILTER, SET_TYPE, CLEAN_DETAIL} from '../actions-types/index'; 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -82,37 +82,37 @@ export const getTypes = () => {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-//filter by type
-export const filterByType = (type) => { 
+//filter by origin
+export const filterPokemon = (filter) => { 
   return{
-    type: TYPE_FILTER,
+    type: SET_FILTER,
+    payload: filter
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//filter by type
+export const filterPokemonType = (type) => {
+  return {
+    type: SET_TYPE,
     payload: type
   }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-//filter by pokemon by origin
-export const filterByPokemonOrigin = (origin) => { 
-  return{
-    type: ORIGIN_FILTER,
-    payload: origin
-  }
-}
-
-///////////////////////////////////////////////////////////////////////////////////////
 //order by name
-export const orderByPokemonName = (name) => { 
+export const orderPokemon = (sort) => { 
   return{
-    type: NAME_ORDER,
-    payload: name
+    type: SET_ORDER,
+    payload: sort
   }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-//order by attack 
-export const orderByPokemonAttack = (attack) => {
+//clean detail
+export const cleanDetail = () => {
   return{
-    type: ATTACK_ORDER,
-    payload: attack
+    type: CLEAN_DETAIL,
+    payload: {}
   }
 }
