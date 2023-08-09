@@ -33,6 +33,18 @@ function OriginFilter() {
         >
           &#10607; Z-A
         </button>
+        <button
+          name="attackAsc"
+          onClick={handleFilter}
+        >
+          + Attack
+        </button>
+        <button
+          name="attackDes"
+          onClick={handleFilter}
+        >
+          - Attack
+        </button>
       </div>
 
       <button

@@ -5,15 +5,15 @@ import "./Cards.css";
 import Card from "../Card/Card";
 import { useSelector } from "react-redux";
 
-function Cards() {
+function Cards({showPokes, pokePage, totalPages, previousPage, nextPage}) {
   const { allPokemons, filter, sort, type } = useSelector((state) => state);
   
 
   const sortOptions = {
     nameAsc: (a, b) => a.name.localeCompare(b.name),
     nameDes: (a, b) => b.name.localeCompare(a.name),
-    attackAsc: (a, b) => a.attack - b.attack,
-    attackDes: (a, b) => b.attack - a.attack,
+    attackDes: (a, b) => a.attack - b.attack,
+    attackAsc: (a, b) => b.attack - a.attack,
   };
 
   const filterOptions = {
@@ -29,9 +29,17 @@ function Cards() {
 
   return (
     <div className="div-contain-cards">
+      <div className="pagination-buttons">
+        <button onClick={previousPage} disabled={pokePage === 0}>
+          Previous
+        </button>
+        <button onClick={nextPage} disabled={pokePage === totalPages - 1}>
+          Next
+        </button>
+      </div>
+      
       <div className="div-cards">
-        {allPokemons &&
-          allPokemons
+        {showPokes
             .sort(sortOptions[sort])
             .filter(filterOptions[filter])
             .filter(filterOptionByType(type))
