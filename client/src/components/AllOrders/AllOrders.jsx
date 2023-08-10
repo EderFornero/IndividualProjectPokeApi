@@ -22,7 +22,6 @@ function OriginFilter() {
         <button
           name="nameAsc"
           onClick={handleFilter}
-          className="button-ordenator"
         >
           &#10607; A-Z
         </button>

@@ -40,7 +40,8 @@ function Nav() {
   return (
     <div className='div-contain-nav'>
       <div className='div-home-nav'>
-      <Link to="/home" onClick={handleOnClick}>Home</Link>
+        <div><Link to="/home" onClick={handleOnClick}>Home</Link></div>
+        <div><Link to="/create">Create</Link></div>
       </div>
       <div className='div-search-nav'>
       <SearchBar handleOnSubmit={handleOnSubmit} />

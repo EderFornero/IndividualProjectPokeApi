@@ -6,20 +6,20 @@ import Card from "../Card/Card";
 import { useSelector } from "react-redux";
 
 function Cards({showPokes, pokePage, totalPages, previousPage, nextPage}) {
-  const { allPokemons, filter, sort, type } = useSelector((state) => state);
+  const { filter, sort, type } = useSelector((state) => state);
   
 
   const sortOptions = {
     nameAsc: (a, b) => a.name.localeCompare(b.name),
     nameDes: (a, b) => b.name.localeCompare(a.name),
     attackDes: (a, b) => a.attack - b.attack,
-    attackAsc: (a, b) => b.attack - a.attack,
+    attackAsc: (a, b) => b.attack - a.attack
   };
 
   const filterOptions = {
     db: (pokemon) => typeof pokemon.id === "string",
     api: (pokemon) => typeof pokemon.id === "number",
-    none: (pokemon) => pokemon,
+    none: (pokemon) => pokemon
   };
 
   const filterOptionByType = (type) => {

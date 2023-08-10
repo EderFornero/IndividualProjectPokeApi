@@ -7,10 +7,12 @@ import NotFound from './pages/NotFound/NotFound.jsx';
 import Welcome from './pages/Welcome/Welcome.jsx';
 import Home from './pages/Home/Home.jsx';
 import Detail from './pages/Detail/Detail.jsx'; 
+import CreatePokemon from './components/CreatePokemon/CreatePokemon';
 
 import {
   createBrowserRouter
 } from 'react-router-dom'
+
 
 
 const router = createBrowserRouter([
@@ -42,6 +44,15 @@ const router = createBrowserRouter([
                 element: <Detail />
               }
             ]
+          }
+        ]
+      }, 
+      {
+        path: 'create',
+        children: [
+          {
+            index: true, 
+            element: <CreatePokemon />
           }
         ]
       }

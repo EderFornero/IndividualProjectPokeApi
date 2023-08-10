@@ -11,7 +11,6 @@ import {
 
 const initialState = {
   allPokemons: [],
-  copyAllPokemons: [],
   getDetail: {},
   getTypes: [],
 
@@ -19,9 +18,6 @@ const initialState = {
   sort: "nameAsc",
   filter: "none",
   type: null,
-
-   /////////////cleaner/////////////
-  
 };
 
 const reducer = (state = initialState, action) => {
@@ -32,7 +28,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allPokemons: action.payload,
-        copyAllPokemons: action.payload,
       };
 
 //////////////////////////////////////////////////////////
