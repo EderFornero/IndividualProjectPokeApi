@@ -116,3 +116,10 @@ export const cleanDetail = () => {
     payload: {}
   }
 }
+
+///////////////////////////////////////////////////////////////////////////////////////
+//clean detail
+export const setPokePage = (page) => ({
+  type: 'SET_POKE_PAGE',
+  payload: page,
+});

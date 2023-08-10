@@ -6,3 +6,4 @@ export const SET_ORDER = 'SET_ORDER';
 export const SET_FILTER = 'SET_FILTER'; 
 export const SET_TYPE = 'SET_TYPE'; 
 export const CLEAN_DETAIL = 'CLEAN_DETAIL'; 
+export const SET_POKE_PAGE = 'SET_POKE_PAGE'; 

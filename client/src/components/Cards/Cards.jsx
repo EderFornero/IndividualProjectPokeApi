@@ -3,29 +3,43 @@ import React from "react";
 import "./Cards.css";
 //components
 import Card from "../Card/Card";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+//actions
+import { setPokePage } from "../../redux/actions";
+//helpers
+import { sortOptions }  from '../Helpers/Sort';
+import { filterOptions, filterOptionByType } from "../Helpers/Filters";
 
-function Cards({showPokes, pokePage, totalPages, previousPage, nextPage}) {
-  const { filter, sort, type } = useSelector((state) => state);
-  
+function Cards() {
 
-  const sortOptions = {
-    nameAsc: (a, b) => a.name.localeCompare(b.name),
-    nameDes: (a, b) => b.name.localeCompare(a.name),
-    attackDes: (a, b) => a.attack - b.attack,
-    attackAsc: (a, b) => b.attack - a.attack
-  };
+  const { filter, sort, type, pokePage, allPokemons } = useSelector((state) => state);
 
-  const filterOptions = {
-    db: (pokemon) => typeof pokemon.id === "string",
-    api: (pokemon) => typeof pokemon.id === "number",
-    none: (pokemon) => pokemon
-  };
 
-  const filterOptionByType = (type) => {
-    if(typeof type === 'string') return pokemon => pokemon.types.some((t) => t.name === type)
-    else return pokemon => pokemon
+  //pagination using redux 
+  const perPage = 10; 
+
+  const dispatch = useDispatch();
+
+  const previousPage = () => {
+    //avoid invalid values
+    dispatch(setPokePage(Math.max(pokePage - 1, 0))); 
   }
+
+  const nextPage = () => {
+    //go to next page
+    dispatch(setPokePage(pokePage + 1)); 
+  }
+
+  //Calculate totalPages based on the total number of pokémon after filters
+  const filteredPokemons = 
+  allPokemons
+    .filter(filterOptions[filter])
+    .filter(filterOptionByType(type));
+  const totalPages = Math.ceil(filteredPokemons.length / perPage);
+
+  //calculating start and final based on pokemons per page
+  const start = pokePage * perPage; 
+  const final = start + perPage; 
 
   return (
     <div className="div-contain-cards">
@@ -33,16 +47,15 @@ function Cards({showPokes, pokePage, totalPages, previousPage, nextPage}) {
         <button onClick={previousPage} disabled={pokePage === 0}>
           Previous
         </button>
-        <button onClick={nextPage} disabled={pokePage === totalPages - 1}>
+        <button onClick={nextPage} disabled={pokePage === totalPages - 1 || filteredPokemons.length === 0}>
           Next
         </button>
       </div>
       
       <div className="div-cards">
-        {showPokes
+        {filteredPokemons
             .sort(sortOptions[sort])
-            .filter(filterOptions[filter])
-            .filter(filterOptionByType(type))
+            .slice(start, final)
             .map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)}
       </div>
     </div>

@@ -7,6 +7,7 @@ import {
   SET_ORDER,
   SET_TYPE,
   CLEAN_DETAIL,
+  SET_POKE_PAGE,
 } from "../actions-types/index";
 
 const initialState = {
@@ -15,9 +16,12 @@ const initialState = {
   getTypes: [],
 
   /////////////filter/////////////
-  sort: "nameAsc",
+  sort: null,
   filter: "none",
   type: null,
+
+  /////////////pages//////////////////
+  pokePage: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -85,6 +89,14 @@ const reducer = (state = initialState, action) => {
       ...state, 
       getDetail: action.payload
     }
+
+//////////////////////////////////////////////////////////
+//set poke page
+    case SET_POKE_PAGE:
+      return {
+        ...state,
+        pokePage: action.payload,
+      };
 
     default:
       return {
