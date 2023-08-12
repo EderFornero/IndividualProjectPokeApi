@@ -1,4 +1,3 @@
-import './App.css';
 //main
 import Main from './Layout/Main';
 //error component

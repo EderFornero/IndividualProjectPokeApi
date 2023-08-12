@@ -1,0 +1,22 @@
+
+/* Styles for screens wider than 768px */
+@media (min-width: 769px) {
+  .div-contain-search {
+    width: 100%;
+    min-height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Styles for screens up to 768px (mobile) */
+@media (max-width: 768px) {
+  .div-contain-search {
+    width: 100%;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+}

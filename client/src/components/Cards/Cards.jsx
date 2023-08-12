@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //css
 import "./Cards.css";
 //components
@@ -6,26 +6,28 @@ import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { setPokePage } from "../../redux/actions";
-//helpers
-import { sortOptions }  from '../Helpers/Sort';
-import { filterOptions, filterOptionByType } from "../Helpers/Filters";
+//helpers 
+import {sortOptions, filterOptions, filterOptionByType} from '../Helpers'
 
 function Cards() {
 
+  //states
   const { filter, sort, type, pokePage, allPokemons } = useSelector((state) => state);
 
-
-  //pagination using redux 
-  const perPage = 10; 
-
+  //pagination
+  const perPage = 12; 
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(0);
 
   const previousPage = () => {
+    setCurrentPage(pokePage - 1)
     //avoid invalid values
     dispatch(setPokePage(Math.max(pokePage - 1, 0))); 
+    
   }
 
   const nextPage = () => {
+    setCurrentPage(pokePage + 1)
     //go to next page
     dispatch(setPokePage(pokePage + 1)); 
   }
@@ -47,6 +49,7 @@ function Cards() {
         <button onClick={previousPage} disabled={pokePage === 0}>
           Previous
         </button>
+        <div>{currentPage} ... <span>{totalPages - 1}</span></div>
         <button onClick={nextPage} disabled={pokePage === totalPages - 1 || filteredPokemons.length === 0}>
           Next
         </button>

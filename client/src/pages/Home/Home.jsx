@@ -5,7 +5,7 @@ import Loader from '../../components/Loader/Loader';
 import TypeFilter from '../../components/TypeFilter/TypeFilter.jsx';
 import AllOrders from '../../components/AllOrders/AllOrders.jsx';
 //react redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 //action
 import { getPokemons } from "../../redux/actions";
 
@@ -21,7 +21,7 @@ function Home() {
     dispatch(getPokemons())
   }, [dispatch])
 
-  
+  //set loader time
   setTimeout(() => {
     setLoading(false)
   }, 1000)

@@ -5,7 +5,7 @@ export const filterOptions = {
 };
 
 export const filterOptionByType = (type) => {
-  if(typeof type === 'string')  {return  pokemon => pokemon.types.some((t) => t.name === type)}
+  if(typeof type === 'string') return  pokemon => pokemon.types.some((t) => t.name === type)
   else return pokemon => pokemon
 };
 
