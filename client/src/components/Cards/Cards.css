@@ -8,3 +8,15 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+
+.pagination-div-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+
+  @media (max-width: 768px){ 
+    gap: 15px;
+  }
+}

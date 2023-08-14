@@ -1,35 +1,293 @@
 .card-content{
-  border: solid 1px black;
+  border: solid 1px var(--main-hover);
   margin: 15px;
   min-width: 400px;
   min-height: 300px;
-  background-color: rgba(102, 102, 102, 0.192);
+  background-color: var(--main-bg);
+
+  @media (max-width: 768px){ 
+    min-width: 300px;
+  }
 }
 
 
 /*types*/
 
+/*fire combo*/
 .fire-card{ 
-  background-color: orange;
+  background-color: var(--fire-card);
 }
 
+.fire-dark-card{ 
+  background: linear-gradient(90deg, var(--fire-card) 50%, var(--dark-card) 50%);
+}
+
+.fire-rock-card{ 
+  background: linear-gradient(90deg, var(--fire-card) 50%, var(--rock-card) 50%);
+}
+
+.fire-flying-card{ 
+  background: linear-gradient(90deg, var(--fire-card) 50%, var(--flying-card) 50%);
+}
+
+
+/*water combo*/
 .water-card{
- background-color: aqua;
-}
-
-.poison-card{ 
-  background-color: rgb(8, 194, 8);
-}
-
-.electric-card{ 
-  background-color: yellow;
+ background-color: var(--water-card);
 }
 
 .water-electric-card{
-  background: linear-gradient(90deg, rgba(4,255,240,0.7) 50%, yellow 50%);
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--electric-card) 50%);
 }
 
 .water-poison-card{
-  background: rgb(4,255,240);
-  background: linear-gradient(90deg, rgba(4,255,240,0.7) 50%, rgba(5,255,4,0.7) 50%);
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--poison-card) 50%);
+}
+
+.water-ice-card{
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--ice-card) 50%);
+}
+
+.water-flying-card{
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--flying-card) 50%);
+}
+
+.water-psychic-card{
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--psychic-card) 50%);
+}
+
+.water-fighting-card{
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--fighting-card) 50%);
+}
+
+.water-fairy-card{
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--fairy-card) 50%);
+}
+
+.water-ground-card{
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--ground-card) 50%);
+}
+
+.water-dragon-card{
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--dragon-card) 50%);
+}
+
+.water-rock-card{
+  background: linear-gradient(90deg, var(--water-card) 50%, var(--rock-card) 50%);
+}
+
+/*poison combo*/
+
+.poison-card{ 
+  background-color: var(--poison-card);
+}
+
+.poison-bug-card{
+  background: linear-gradient(90deg, var(--poison-card) 50%, var(--bug-card) 50%);
+}
+
+.poison-ground-card{
+  background: linear-gradient(90deg, var(--poison-card) 50%, var(--ground-card) 50%);
+}
+
+.poison-ghost-card{
+  background: linear-gradient(90deg, var(--poison-card) 50%, var(--ghost-card) 50%);
+}
+
+.poison-flying-card{
+  background: linear-gradient(90deg, var(--poison-card) 50%, var(--flying-card) 50%);
+}
+
+.poison-grass-card{ 
+  background: linear-gradient(90deg, var(--poison-card) 50%, var(--grass-card) 50%);
+}
+
+/*electric combo*/
+
+.electric-card{ 
+  background-color: var(--electric-card);
+}
+
+.electric-steel-card{ 
+  background: linear-gradient(90deg, var(--electric-card) 50%, var(--steel-card) 50%);
+}
+
+.electric-flying-card{ 
+  background: linear-gradient(90deg, var(--electric-card) 50%, var(--flying-card) 50%);
+}
+
+
+/*grass combo*/
+.grass-card{
+  background-color: var(--grass-card);
+}
+
+.grass-flying-card{ 
+  background: linear-gradient(90deg, var(--grass-card) 50%, var(--flying-card) 50%);
+}
+
+.grass-bug-card{ 
+  background: linear-gradient(90deg, var(--grass-card) 50%, var(--bug-card) 50%);
+}
+
+.grass-psychic-card{ 
+  background: linear-gradient(90deg, var(--grass-card) 50%, var(--psychic-card) 50%);
+}
+
+
+/*normal combo*/
+
+.normal-card{ 
+  background-color: var(--normal-card);
+}
+
+.normal-flying-card{
+  background: linear-gradient(90deg, var(--normal-card) 50%, var(--flying-card) 50%);
+}
+
+.normal-psychic-card{
+  background: linear-gradient(90deg, var(--normal-card) 50%, var(--psychic-card) 50%);
+}
+
+.normal-fairy-card{
+  background: linear-gradient(90deg, var(--normal-card) 50%, var(--fairy-card) 50%);
+}
+
+
+/*fighting combo*/
+
+.fighting-card{
+  background-color: var(--fighting-card);
+}
+
+/*flying combo*/
+
+.flying-card{
+  background-color: var(--flying-card);
+}
+
+.flying-fairy-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--fairy-card) 50%);
+}
+
+.flying-bug-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--bug-card) 50%);
+}
+
+.flying-rock-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--rock-card) 50%);
+}
+
+.flying-dragon-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--dragon-card) 50%);
+}
+
+.flying-psychic-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--psychic-card) 50%);
+}
+
+.flying-dark-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--dark-card) 50%);
+}
+
+.flying-ice-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--ice-card) 50%);
+}
+
+.flying-ground-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--ground-card) 50%);
+}
+
+.flying-steel-card{ 
+  background: linear-gradient(90deg, var(--flying-card) 50%, var(--steel-card) 50%);
+}
+
+/*ground combo*/
+
+.ground-card{
+  background-color: var(--ground-card);
+}
+
+.ground-ice-card{ 
+  background: linear-gradient(90deg, var(--ground-card) 50%, var(--ice-card) 50%);
+}
+
+/*rock combo*/
+
+.rock-card{
+  background-color: var(--rock-card);
+}
+
+.rock-ground-card{
+  background: linear-gradient(90deg, var(--rock-card) 50%, var(--ground-card) 50%);
+}
+
+.rock-dark-card{
+  background: linear-gradient(90deg, var(--rock-card) 50%, var(--dark-card) 50%);
+}
+
+/*bug combo*/
+
+.bug-card{
+  background-color: var(--bug-card);
+}
+
+.bug-steel-card{
+  background: linear-gradient(90deg, var(--bug-card) 50%, var(--steel-card) 50%);
+}
+
+.bug-fighting-card{
+  background: linear-gradient(90deg, var(--bug-card) 50%, var(--fighting-card) 50%);
+}
+
+.bug-rock-card{
+  background: linear-gradient(90deg, var(--bug-card) 50%, var(--rock-card) 50%);
+}
+
+/*ghost*/
+
+.ghost-card{
+  background-color: var(--ghost-card);
+}
+
+/*psychic*/
+
+.psychic-card{
+  background-color: var(--psychic-card);
+}
+
+.psychic-ice-card{
+  background: linear-gradient(90deg, var(--psychic-card) 50%, var(--ice-card) 50%);
+}
+
+.psychic-fairy-card{
+  background: linear-gradient(90deg, var(--psychic-card) 50%, var(--fairy-card) 50%);
+}
+
+/*ice*/
+
+.ice-card{
+  background-color: var(--ice-card);
+}
+
+.ice-dark-card{
+  background: linear-gradient(90deg, var(--ice-card) 50%, var(--dark-card) 50%);
+}
+
+/*dragon*/
+
+.dragon-card{
+  background-color: var(--dragon-card);
+}
+
+/*dark*/
+
+.dark-card{
+  background-color: var(--dark-card);
+}
+
+/*fairy*/
+
+.fairy-card{
+  background-color: var(--fairy-card);
 }

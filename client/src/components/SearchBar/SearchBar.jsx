@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 //react redux
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 //actions
-import {getPokeByName, getPokemons} from '../../redux/actions/index.js';
+import {getPokeByName, getPokemons, setPokePage} from '../../redux/actions/index.js';
 //css
 import './SearchBar.css';
 import styled from 'styled-components';
@@ -35,6 +35,7 @@ const SearchBar = () => {
   useEffect(() => {
     if(pokemon !== ''){
       dispatch(getPokeByName(pokemon))
+      dispatch(setPokePage(0));
     }else{
       dispatch(getPokeByName('')); 
       dispatch(getPokemons());

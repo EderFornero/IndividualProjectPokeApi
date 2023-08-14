@@ -22,8 +22,6 @@
   background-position: relative;
 
   @media (max-width: 768px){
-    display: flex;
-    justify-content: start;
     position: absolute;
     right: calc(50% - 150px);
   }

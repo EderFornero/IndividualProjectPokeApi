@@ -70,6 +70,7 @@ export const Button = styled.button`
 
 &:disabled {
  pointer-events: none;
+ background-color: var(--main-disable);
 }
 
 &:hover {

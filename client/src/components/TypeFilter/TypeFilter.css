@@ -23,8 +23,6 @@
   z-index: 1;
 
   @media (max-width: 768px){
-    display: flex;
-    justify-content: start;
     position: absolute;
     left: calc(50% - 150px);
   }

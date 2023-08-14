@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 //css
 import "./Cards.css";
+import {Button} from '../Nav/Nav'
 //components
 import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,14 +46,14 @@ function Cards() {
 
   return (
     <div className="div-contain-cards">
-      <div className="pagination-buttons">
-        <button onClick={previousPage} disabled={pokePage === 0}>
+      <div className="pagination-div-buttons">
+        <Button onClick={previousPage} disabled={pokePage === 0}>
           Previous
-        </button>
+        </Button>
         <div>{pokePage} ... <span>{totalPages !== 0 ? totalPages - 1 : 0}</span></div>
-        <button onClick={nextPage} disabled={pokePage === totalPages - 1 || filteredPokemons.length === 0}>
+        <Button onClick={nextPage} disabled={pokePage === totalPages - 1 || filteredPokemons.length === 0}>
           Next
-        </button>
+        </Button>
       </div>
       
       <div className="div-cards">
@@ -61,6 +62,7 @@ function Cards() {
             .slice(start, final)
             .map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)}
       </div>
+      
     </div>
   );
 }
