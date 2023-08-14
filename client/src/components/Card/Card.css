@@ -3,8 +3,33 @@
   margin: 15px;
   min-width: 400px;
   min-height: 300px;
+  background-color: rgba(102, 102, 102, 0.192);
 }
 
 
 /*types*/
 
+.fire-card{ 
+  background-color: orange;
+}
+
+.water-card{
+ background-color: aqua;
+}
+
+.poison-card{ 
+  background-color: rgb(8, 194, 8);
+}
+
+.electric-card{ 
+  background-color: yellow;
+}
+
+.water-electric-card{
+  background: linear-gradient(90deg, rgba(4,255,240,0.7) 50%, yellow 50%);
+}
+
+.water-poison-card{
+  background: rgb(4,255,240);
+  background: linear-gradient(90deg, rgba(4,255,240,0.7) 50%, rgba(5,255,4,0.7) 50%);
+}

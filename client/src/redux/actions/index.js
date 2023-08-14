@@ -36,7 +36,7 @@ export const getPokeByName = (name) => {
    
 
     } catch (error) {
-      alert("Pokemon not found", error.message);  
+      return [];  
     }
   }
 }

@@ -2,40 +2,20 @@ import React from 'react'
 //components
 import SearchBar from '../SearchBar/SearchBar.jsx' 
 //router
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 //css
 import './Nav.css'
 import styled from 'styled-components'
 //react redux
-import { useDispatch } from 'react-redux';
-//actions
-import {getPokeByName, getPokemons} from '../../redux/actions/index';
+
+
 
 
 function Nav() {
 
-  
-  const dispatch = useDispatch(); 
+  const location = useLocation();
 
-  //get all
-  const handleOnClick = () => {
-    dispatch(getPokemons())
-  }
-
-  //search by name
-  const handleOnSubmit = async (e, name) => {
-    e.preventDefault(); 
-    try {
-      const res = await dispatch(getPokeByName(name));
-      
-      if(res.payload && res.payload.length === 0){
-      console.log("You must write some Pokemon name");
-      }
-    }catch (error) {
-      console.log('Error: ', error.message);
-  }
-}
-
+  const showSearchBar = location.pathname !== '/create'; 
 
   return (
     <div className='div-contain-nav'>
@@ -43,17 +23,17 @@ function Nav() {
       <details className="dropdown-buttons"> 
         <summary className="dropdown-summary">Menu</summary>
           <div className="dropdown-content">
-            <Link to="/home" onClick={handleOnClick}><Button>Home</Button></Link>
+            <Link to="/home"><Button>Home</Button></Link>
             <Link to="/create"><Button>Create</Button></Link>
           </div>
       </details>
 
 
-
+      {showSearchBar && 
       <div className='div-search-nav'>
-      <SearchBar handleOnSubmit={handleOnSubmit} />
+      <SearchBar />
       </div>
-      
+      }
     </div>
   )
 }
@@ -63,11 +43,11 @@ export default Nav;
 
 export const Button = styled.button`
  appearance: none;
- background-color: #f5f5f5;
- border: 0.125em solid #1A1A1A;
+ background-color: var(--main-bg);
+ border: 0.125em solid var(--main-hover);
  border-radius: 0.9375em;
  box-sizing: border-box;
- color: #3B3B3B;
+ color: var(--button-font);
  cursor: pointer;
  display: inline-block;
  font-size: 12px;
@@ -95,7 +75,7 @@ export const Button = styled.button`
 &:hover {
  color: #fff;
  background-color: #000;
- box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+ box-shadow: var(--button-hover) 0 8px 15px;
  transform: translateY(-2px);
 }
 

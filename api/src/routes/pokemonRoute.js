@@ -20,7 +20,6 @@ router
                     return res.status(404).json({"message": `Pokemon ${name} does not exist`});
                 };
             };
-            
             return res.status(200).json(pokemon); 
         }
 

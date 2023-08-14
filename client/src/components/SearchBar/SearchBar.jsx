@@ -1,28 +1,56 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+//react redux
+import {useDispatch} from 'react-redux';
+//actions
+import {getPokeByName, getPokemons} from '../../redux/actions/index.js';
 //css
-import './SearchBar.css'
-import styled from 'styled-components'
-import { Button } from '../Nav/Nav';
+import './SearchBar.css';
+import styled from 'styled-components';
 
-const SearchBar = ({handleOnSubmit}) => {
+
+const SearchBar = () => {
+
+  const dispatch = useDispatch();
 
   //state for input value
   const [pokemon, setPokemon] = useState("");
-  
+  const [listener, setListener] = useState(""); 
+
   //get input value
-  const handleOnChange = (e) => {
-    setPokemon(e.target.value); 
+  const handleOnChange = (value) => {
+    setListener(value); 
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPokemon(listener)
+    }, 300)
+
+    return () => {
+      clearTimeout(timer); 
+    }
+  }, [listener])
+
+
+  useEffect(() => {
+    if(pokemon !== ''){
+      dispatch(getPokeByName(pokemon))
+    }else{
+      dispatch(getPokeByName('')); 
+      dispatch(getPokemons());
+    }
+  }, [dispatch, pokemon]); 
+
 
   return (
     <div className='div-contain-search'>
     <Input
       type="text"
-      value={pokemon}
-      onChange={handleOnChange}
+      value={listener}
+      onChange={(e) => handleOnChange(e.target.value)}
       placeholder="Search some Pokemon"
     />
-    <Button onClick={(e) => handleOnSubmit(e, pokemon)}>Search</Button>
+   
   </div>
   )
 }
@@ -30,9 +58,11 @@ const SearchBar = ({handleOnSubmit}) => {
 export default SearchBar;
 
 
+
+//styled component
 const Input = styled.input`
   max-width: 190px;
-  background-color: #f5f5f5;
+  background-color: var(--main-bg);
   color: #242424;
   padding: .15rem .5rem;
   min-height: 40px;

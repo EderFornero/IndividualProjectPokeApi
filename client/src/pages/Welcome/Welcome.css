@@ -10,11 +10,21 @@
 
 .background-image{
   display: flex;
-  justify-content: left;
-  min-width: 100%;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   background: url('../../Images/pikachuBg.webp');
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  
+  @media (max-width: 1060px) {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+  }
+ 
 }
 
 .div-button{
@@ -28,23 +38,41 @@
 .button-link{
   border: none;
   outline: none;
-  background: none; 
+  background: none;
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  background-color: #00000049;
+}
+
+.button-link:hover{
+  border: 2px solid #FFFF00;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .link-tag-button{
   font-family: PokeFont;
   font-size: 40px;
   text-decoration: none;
-  color: rgb(207, 203, 203);
+  color: #fff;
 }
 
 
 .link-tag-button:hover{
   color: #FFFF00;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   text-decoration: underline;
 }
 
 
+@media (max-width: 768px) {
+
+
+  .link-tag-button {
+    font-size: 22px;
+  }
+}
 
 @font-face {
   font-family: PokeFont;

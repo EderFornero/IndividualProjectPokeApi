@@ -1,25 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 //components
 import Cards from '../../components/Cards/Cards'; 
 import Loader from '../../components/Loader/Loader';
 import TypeFilter from '../../components/TypeFilter/TypeFilter.jsx';
 import AllOrders from '../../components/AllOrders/AllOrders.jsx';
-//react redux
-import { useDispatch } from "react-redux";
-//action
-import { getPokemons } from "../../redux/actions";
+//css
+import './Home.css'; 
 
 function Home() {
 
-  const dispatch = useDispatch(); 
- 
   //loader
   const [loading, setLoading] = useState(true);
-
-  //mounting the component
-  useEffect(() => {
-    dispatch(getPokemons())
-  }, [dispatch])
 
   //set loader time
   setTimeout(() => {
@@ -32,8 +23,10 @@ function Home() {
         loading ? <Loader /> 
         :
         <>
+        <div className="filter-and-order">
         <TypeFilter />
         <AllOrders />
+        </div>
         <Cards />
         </>
       }

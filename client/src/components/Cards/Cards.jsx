@@ -17,20 +17,20 @@ function Cards() {
   //pagination
   const perPage = 12; 
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(0);
+
 
   const previousPage = () => {
-    setCurrentPage(pokePage - 1)
     //avoid invalid values
     dispatch(setPokePage(Math.max(pokePage - 1, 0))); 
-    
+   
   }
 
   const nextPage = () => {
-    setCurrentPage(pokePage + 1)
     //go to next page
     dispatch(setPokePage(pokePage + 1)); 
+   
   }
+
 
   //Calculate totalPages based on the total number of pokémon after filters
   const filteredPokemons = 
@@ -49,7 +49,7 @@ function Cards() {
         <button onClick={previousPage} disabled={pokePage === 0}>
           Previous
         </button>
-        <div>{currentPage} ... <span>{totalPages - 1}</span></div>
+        <div>{pokePage} ... <span>{totalPages !== 0 ? totalPages - 1 : 0}</span></div>
         <button onClick={nextPage} disabled={pokePage === totalPages - 1 || filteredPokemons.length === 0}>
           Next
         </button>
