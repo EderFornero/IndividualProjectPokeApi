@@ -1,6 +1,6 @@
 import React, { useEffect }  from 'react'
 //react router 
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 //components 
 import Nav from '../components/Nav/Nav';
 //react redux
@@ -11,9 +11,9 @@ import {getTypes} from '../redux/actions/index';
 function Main() {
 
   const dispatch = useDispatch(); 
-  //get id by useParams 
-  const {id} = useParams();
-  //charge types before anything else
+
+
+    //charge types before anything else
   useEffect(() => {
     dispatch(getTypes());
   }, [dispatch])
@@ -23,13 +23,12 @@ function Main() {
   const location = useLocation(); 
   //do not show navbar in welcome page
   const showNav = location.pathname !== '/'; 
-  //do not show navbar in detail view
-  const showDetail = location.pathname !== `/home/detail/${id}`;
+
 
   return (
     <>
         {
-          showNav && showDetail && <Nav />
+          showNav && <Nav />
         }
         <Outlet />
     </>

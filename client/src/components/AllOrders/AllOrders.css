@@ -20,6 +20,7 @@
   border-radius: 10px;
   background-color: var(--main-bg);
   background-position: relative;
+  z-index: 1;
 
   @media (max-width: 768px){
     position: absolute;

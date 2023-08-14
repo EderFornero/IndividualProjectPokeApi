@@ -38,7 +38,6 @@ function Detail() {
       {idValid && (
         <>
           {/*if id exist show pokemons*/}
-          <div><Link to="/home">GO BACK</Link></div>
           {detail ? (
             <div>
               {/*name*/}

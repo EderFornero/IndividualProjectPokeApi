@@ -61,6 +61,7 @@ function Cards() {
             .sort(sortOptions[sort])
             .slice(start, final)
             .map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)}
+            <div className="div-formal-cards"></div>
       </div>
       
     </div>

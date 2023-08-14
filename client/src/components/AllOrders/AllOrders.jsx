@@ -29,7 +29,7 @@ function OriginFilter() {
   return (
     <div className="sort-container">
       <div className="sort-by-name-attack">
-        <Button onClick={() => toggleSort()}>Sort by</Button>
+        <Button onClick={() => toggleSort()}>Sort and Filter by</Button>
       </div>
 
       <div className={`${isOpen ? 'div-sort-opened' : 'div-sort-closed'}`}>
@@ -79,6 +79,14 @@ function OriginFilter() {
         onClick={handleOriginFilter}
       >
         Created Pokemons
+      </button>
+
+      <button
+        className="sort-button"
+        name="none"
+        onClick={handleOriginFilter}
+      >
+        All Pokemons
       </button>
       
        </div>

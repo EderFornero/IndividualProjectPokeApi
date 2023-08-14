@@ -1,6 +1,7 @@
 .card-content{
-  border: solid 1px var(--main-hover);
-  margin: 15px;
+  border: solid 8px var(--main-hover);
+  border-radius: 10px;
+  margin-top: 25px;
   min-width: 400px;
   min-height: 300px;
   background-color: var(--main-bg);
@@ -10,8 +11,86 @@
   }
 }
 
+.card-content:hover{
+  transform: translateY(-20px);
+  transition: all ease-out .3s;
+}
+
+/*name*/
+.card-name-showing{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+}
+
+.card-name-showing-h2{
+  background-color: var(--main-hover);
+  border-radius: 8px;
+  width: 150px;
+  text-align: center;
+  margin: 12px;
+  font-family: PokeFont;
+  font-weight: 500;
+}
+
+
+/*image*/
+.card-image-showing{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image-showing-img{
+  object-fit: cover;
+  width: 350px;
+}
 
 /*types*/
+.card-types-showing{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 400px;
+  padding: 5px;
+  @media (max-width: 768px){ 
+    width: 300px;
+  }
+}
+
+.card-types-showing-h4{
+  font-size: 18px;
+  background-color: var(--main-hover);
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/*link*/
+.link-to-detail-page{
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+.link-to-detail-page-tag{
+  background-color: var(--main-hover);
+  color: #fff;
+  font-size: 12.5px;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.link-to-detail-page-tag:hover{
+  transform: scale(1.08);
+  transition: all ease-out .3s;
+}
+
+
+/*types bg*/
 
 /*fire combo*/
 .fire-card{ 
@@ -290,4 +369,10 @@
 
 .fairy-card{
   background-color: var(--fairy-card);
+}
+
+
+@font-face {
+  font-family: PokeFont;
+  src: url('../../Fonts/Pokemon\ Solid.ttf');
 }

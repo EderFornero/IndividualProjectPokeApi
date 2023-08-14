@@ -2,11 +2,10 @@ import React from 'react'
 //components
 import SearchBar from '../SearchBar/SearchBar.jsx' 
 //router
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 //css
 import './Nav.css'
 import styled from 'styled-components'
-//react redux
 
 
 
@@ -14,8 +13,9 @@ import styled from 'styled-components'
 function Nav() {
 
   const location = useLocation();
+  const {id} = useParams(); 
 
-  const showSearchBar = location.pathname !== '/create'; 
+  const showSearchBar = location.pathname !== '/create' && location.pathname !== `/home/detail/${id}`; 
 
   return (
     <div className='div-contain-nav'>
