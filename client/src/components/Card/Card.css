@@ -98,15 +98,15 @@
 }
 
 .fire-dark-card{ 
-  background: linear-gradient(90deg, var(--fire-card) 50%, var(--dark-card) 50%);
+  background: linear-gradient(45deg, var(--fire-card) 45%, var(--dark-card) 55%);
 }
 
 .fire-rock-card{ 
-  background: linear-gradient(90deg, var(--fire-card) 50%, var(--rock-card) 50%);
+  background: linear-gradient(45deg, var(--fire-card) 45%, var(--rock-card) 55%);
 }
 
 .fire-flying-card{ 
-  background: linear-gradient(90deg, var(--fire-card) 50%, var(--flying-card) 50%);
+  background: linear-gradient(45deg, var(--fire-card) 45%, var(--flying-card) 55%);
 }
 
 
@@ -116,43 +116,43 @@
 }
 
 .water-electric-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--electric-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--electric-card) 55%);
 }
 
 .water-poison-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--poison-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--poison-card) 55%);
 }
 
 .water-ice-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--ice-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--ice-card) 55%);
 }
 
 .water-flying-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--flying-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--flying-card) 55%);
 }
 
 .water-psychic-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--psychic-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--psychic-card) 55%);
 }
 
 .water-fighting-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--fighting-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--fighting-card) 55%);
 }
 
 .water-fairy-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--fairy-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--fairy-card) 55%);
 }
 
 .water-ground-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--ground-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--ground-card) 55%);
 }
 
 .water-dragon-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--dragon-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--dragon-card) 55%);
 }
 
 .water-rock-card{
-  background: linear-gradient(90deg, var(--water-card) 50%, var(--rock-card) 50%);
+  background: linear-gradient(45deg, var(--water-card) 45%, var(--rock-card) 55%);
 }
 
 /*poison combo*/
@@ -162,23 +162,23 @@
 }
 
 .poison-bug-card{
-  background: linear-gradient(90deg, var(--poison-card) 50%, var(--bug-card) 50%);
+  background: linear-gradient(45deg, var(--poison-card) 45%, var(--bug-card) 55%);
 }
 
 .poison-ground-card{
-  background: linear-gradient(90deg, var(--poison-card) 50%, var(--ground-card) 50%);
+  background: linear-gradient(45deg, var(--poison-card) 45%, var(--ground-card) 55%);
 }
 
 .poison-ghost-card{
-  background: linear-gradient(90deg, var(--poison-card) 50%, var(--ghost-card) 50%);
+  background: linear-gradient(45deg, var(--poison-card) 45%, var(--ghost-card) 55%);
 }
 
 .poison-flying-card{
-  background: linear-gradient(90deg, var(--poison-card) 50%, var(--flying-card) 50%);
+  background: linear-gradient(45deg, var(--poison-card) 45%, var(--flying-card) 55%);
 }
 
 .poison-grass-card{ 
-  background: linear-gradient(90deg, var(--poison-card) 50%, var(--grass-card) 50%);
+  background: linear-gradient(45deg, var(--poison-card) 45%, var(--grass-card) 55%);
 }
 
 /*electric combo*/
@@ -188,11 +188,11 @@
 }
 
 .electric-steel-card{ 
-  background: linear-gradient(90deg, var(--electric-card) 50%, var(--steel-card) 50%);
+  background: linear-gradient(45deg, var(--electric-card) 45%, var(--steel-card) 55%);
 }
 
 .electric-flying-card{ 
-  background: linear-gradient(90deg, var(--electric-card) 50%, var(--flying-card) 50%);
+  background: linear-gradient(45deg, var(--electric-card) 45%, var(--flying-card) 55%);
 }
 
 
@@ -202,15 +202,15 @@
 }
 
 .grass-flying-card{ 
-  background: linear-gradient(90deg, var(--grass-card) 50%, var(--flying-card) 50%);
+  background: linear-gradient(45deg, var(--grass-card) 45%, var(--flying-card) 55%);
 }
 
 .grass-bug-card{ 
-  background: linear-gradient(90deg, var(--grass-card) 50%, var(--bug-card) 50%);
+  background: linear-gradient(45deg, var(--grass-card) 45%, var(--bug-card) 55%);
 }
 
 .grass-psychic-card{ 
-  background: linear-gradient(90deg, var(--grass-card) 50%, var(--psychic-card) 50%);
+  background: linear-gradient(45deg, var(--grass-card) 45%, var(--psychic-card) 55%);
 }
 
 
@@ -221,15 +221,15 @@
 }
 
 .normal-flying-card{
-  background: linear-gradient(90deg, var(--normal-card) 50%, var(--flying-card) 50%);
+  background: linear-gradient(45deg, var(--normal-card) 45%, var(--flying-card) 55%);
 }
 
 .normal-psychic-card{
-  background: linear-gradient(90deg, var(--normal-card) 50%, var(--psychic-card) 50%);
+  background: linear-gradient(45deg, var(--normal-card) 45%, var(--psychic-card) 55%);
 }
 
 .normal-fairy-card{
-  background: linear-gradient(90deg, var(--normal-card) 50%, var(--fairy-card) 50%);
+  background: linear-gradient(45deg, var(--normal-card) 45%, var(--fairy-card) 55%);
 }
 
 
@@ -246,39 +246,39 @@
 }
 
 .flying-fairy-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--fairy-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--fairy-card) 55%);
 }
 
 .flying-bug-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--bug-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--bug-card) 55%);
 }
 
 .flying-rock-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--rock-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--rock-card) 55%);
 }
 
 .flying-dragon-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--dragon-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--dragon-card) 55%);
 }
 
 .flying-psychic-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--psychic-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--psychic-card) 55%);
 }
 
 .flying-dark-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--dark-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--dark-card) 55%);
 }
 
 .flying-ice-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--ice-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--ice-card) 55%);
 }
 
 .flying-ground-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--ground-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--ground-card) 55%);
 }
 
 .flying-steel-card{ 
-  background: linear-gradient(90deg, var(--flying-card) 50%, var(--steel-card) 50%);
+  background: linear-gradient(45deg, var(--flying-card) 45%, var(--steel-card) 55%);
 }
 
 /*ground combo*/
@@ -288,7 +288,7 @@
 }
 
 .ground-ice-card{ 
-  background: linear-gradient(90deg, var(--ground-card) 50%, var(--ice-card) 50%);
+  background: linear-gradient(45deg, var(--ground-card) 45%, var(--ice-card) 55%);
 }
 
 /*rock combo*/
@@ -298,11 +298,11 @@
 }
 
 .rock-ground-card{
-  background: linear-gradient(90deg, var(--rock-card) 50%, var(--ground-card) 50%);
+  background: linear-gradient(45deg, var(--rock-card) 45%, var(--ground-card) 55%);
 }
 
 .rock-dark-card{
-  background: linear-gradient(90deg, var(--rock-card) 50%, var(--dark-card) 50%);
+  background: linear-gradient(45deg, var(--rock-card) 45%, var(--dark-card) 55%);
 }
 
 /*bug combo*/
@@ -312,15 +312,15 @@
 }
 
 .bug-steel-card{
-  background: linear-gradient(90deg, var(--bug-card) 50%, var(--steel-card) 50%);
+  background: linear-gradient(45deg, var(--bug-card) 45%, var(--steel-card) 55%);
 }
 
 .bug-fighting-card{
-  background: linear-gradient(90deg, var(--bug-card) 50%, var(--fighting-card) 50%);
+  background: linear-gradient(45deg, var(--bug-card) 45%, var(--fighting-card) 55%);
 }
 
 .bug-rock-card{
-  background: linear-gradient(90deg, var(--bug-card) 50%, var(--rock-card) 50%);
+  background: linear-gradient(45deg, var(--bug-card) 45%, var(--rock-card) 55%);
 }
 
 /*ghost*/
@@ -336,11 +336,11 @@
 }
 
 .psychic-ice-card{
-  background: linear-gradient(90deg, var(--psychic-card) 50%, var(--ice-card) 50%);
+  background: linear-gradient(45deg, var(--psychic-card) 45%, var(--ice-card) 55%);
 }
 
 .psychic-fairy-card{
-  background: linear-gradient(90deg, var(--psychic-card) 50%, var(--fairy-card) 50%);
+  background: linear-gradient(45deg, var(--psychic-card) 45%, var(--fairy-card) 55%);
 }
 
 /*ice*/
@@ -350,7 +350,7 @@
 }
 
 .ice-dark-card{
-  background: linear-gradient(90deg, var(--ice-card) 50%, var(--dark-card) 50%);
+  background: linear-gradient(45deg, var(--ice-card) 45%, var(--dark-card) 55%);
 }
 
 /*dragon*/

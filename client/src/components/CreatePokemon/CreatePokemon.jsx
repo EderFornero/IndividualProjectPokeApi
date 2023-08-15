@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router'
 import validation from '../Helpers/Validation.js'
 //css
 import './CreatePokemon.css'
+import {Button} from '../Nav/Nav.jsx'
 //actions
 import { createPokemon } from '../../redux/actions/index.js';
 
@@ -20,7 +21,8 @@ function CreatePokemon() {
   //pokemon successfully created state
   const [pokemonCreated, setPokemonCreated] = useState(false); 
   const [errorPokemon, setErrorPokemon] = useState(false); 
-  const [disableButton, setDisableButton] = useState(false); 
+  const [disableButton, setDisableButton] = useState(true); 
+  const [selectedTypes, setSelectedTypes] = useState([]);
 
   //handle error state
   const [error, setError] = useState({}); 
@@ -66,6 +68,7 @@ function CreatePokemon() {
                   ? pokemon.types.filter(type => type !== value) 
                   : [...pokemon.types, value]
 
+    setSelectedTypes(update)
     setPokemon({
       ...pokemon, 
       types: update,
@@ -85,6 +88,32 @@ function CreatePokemon() {
     }
   }
 
+  //remove type selected
+  const handleRemoveSelectedType = (removedType) => {
+    
+    const update = selectedTypes.filter(type => type !== removedType);
+    setSelectedTypes(update);
+    
+    const updatedPokemon = pokemon.types.filter(type => type !== removedType);
+    setPokemon({
+      ...pokemon,
+      types: updatedPokemon,
+    });
+  
+    const validate = validation({
+      ...pokemon,
+      types: updatedPokemon,
+    });
+  
+    setError(validate);
+  
+    if (Object.keys(validate).length === 0) {
+      setDisableButton(false);
+    } else {
+      setDisableButton(true);
+    }
+  };
+
   //handle on submit 
   const handleOnSubmit = (e) => {
     e.preventDefault(); 
@@ -95,29 +124,33 @@ function CreatePokemon() {
   const handleOnCreate = async () => {
     try {
       const res = await dispatch(createPokemon(pokemon));
-      console.log("res::::::", res);
-      if (res.status === 201) { 
-        setPokemonCreated(true)}
-      //   //send automatically user to home after pokemon successfully created
-      //   setTimeout(() => {
-      //     navigate('/home')
-      //   }, 2000);
-      // } 
+      console.log("res: ", res);
+      if (res.payload) { 
+        setPokemonCreated(true);
+      }
     } catch (error) {
-      console.log("error:::", error.message);
-      setErrorPokemon(true)
-      setTimeout(() => { 
-        setErrorPokemon(false)
+      setErrorPokemon(true);
+      setTimeout(() => {
+        setErrorPokemon(false); 
       }, 1000)
-    
     }
-  }
+  };
+  
+  useEffect(() => {
+    if (pokemonCreated) {
+      const timer = setTimeout(() => {
+        navigate('/home');
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [pokemonCreated, navigate]);
 
   return (
-    <div>
+    <div className='form-container'>
       <h3>¡Create your own Pokemon!</h3>
       <form onSubmit={handleOnSubmit}>
-        
+      
+      <div>
         {/* Name */}
         <label>
           Name:
@@ -125,16 +158,22 @@ function CreatePokemon() {
           {error.name && <p className="error-message">{error.name}</p>}
         </label>
 
-    <br />
+      </div>
 
+        <br />
+
+      <div>
         {/* Image */}
         <label>
           Image:
           <input placeholder='Ex: https://shorturl.at/dotLM' type="text" name="image" value={pokemon.image} onChange={handleOnChange} />
           {error.image && <p className="error-message">{error.image}</p>}
         </label>
+      </div>
 
         <br />
+
+      <div>
 
         {/* Health Points */}
         <label>
@@ -143,7 +182,11 @@ function CreatePokemon() {
           {error.health_points && <p className="error-message">{error.health_points}</p>}
         </label>
 
-      <br />
+      </div>
+
+        <br />
+
+      <div>
 
         {/* Attack */}
         <label>
@@ -152,16 +195,24 @@ function CreatePokemon() {
           {error.attack && <p className="error-message">{error.attack}</p>}
         </label>
 
-      <br />
+      </div>
+
+        <br />
+
+      <div>
 
         {/* Defense */}
         <label>
           Defense:
           <input placeholder='Ex: 20' type="text" name="defense" value={pokemon.defense} onChange={handleOnChange} />
-          {error.defense && <p className="error-message">{error.defense}</p>}
         </label>
+        {error.defense && <p className="error-message">{error.defense}</p>}
 
-      <br />
+      </div>
+
+        <br />
+
+      <div>
 
         {/* Speed */}
         <label>
@@ -170,17 +221,22 @@ function CreatePokemon() {
           {error.speed && <p className="error-message">{error.speed}</p>}
         </label>
 
-      <br />
+      </div>
+      
+        <br />
 
+      <div>
         {/* Height */}
         <label>
           Height:
           <input placeholder='Ex: 11' type="text" name="height" value={pokemon.height} onChange={handleOnChange} />
           {error.height && <p className="error-message">{error.height}</p>}
         </label>
+      </div>
 
-      <br />
-
+        <br />
+   
+      <div>
         {/* Weight */}
         <label>
           Weight:
@@ -188,20 +244,47 @@ function CreatePokemon() {
           {error.weight && <p className="error-message">{error.weight}</p>}
         </label>
 
-      <br />
+      </div>
 
-         {/* Types */}
-         <label>
+        <br />
+
+        <div>
+        {/* Types */}
+        <label>
           Types:
-            <select className='select-types' multiple name="types" value={pokemon.types} onChange={handleOnChangeType}>
-                 {types && types.map((type, i) => (
-                 <option key={i} value={type.name}>{type.name}</option>
-                 ))}
-             </select>
-             {error.types && <p className="error-message">{error.types}</p>}
-          </label>
+          <select
+            className='select-types'
+            name="types"
+            value={selectedTypes}
+            onChange={handleOnChangeType}
+          >
+            {types && types.map((type, i) => (
+              <option key={i} value={type.name}>{type.name}</option>
+            ))}
+          </select>
 
-        <button type='submit' disabled={disableButton} onClick={handleOnCreate}>Create</button>
+          {selectedTypes.length > 0 && (
+            <div className="selected-types">
+              {selectedTypes.map((type, i) => (
+                  <button
+                    key={i}
+                    className="remove-type-button"
+                    onClick={() => handleRemoveSelectedType(type)}
+                  >
+                   {type}
+                  </button>
+              ))}
+            </div>
+          )}
+          {error.types && <p className="error-message">{error.types}</p>}
+        </label>
+      </div>
+
+        <br />
+
+      <div className='create-button'>
+        <Button  type='submit' disabled={disableButton} onClick={handleOnCreate}>Create</Button>
+      </div>
       </form>
      
       {/*error on create*/}

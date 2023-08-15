@@ -16,6 +16,8 @@ function Nav() {
   const {id} = useParams(); 
 
   const showSearchBar = location.pathname !== '/create' && location.pathname !== `/home/detail/${id}`; 
+  const showHome = location.pathname !== '/home'; 
+  const showCreate = location.pathname !== '/create'; 
 
   return (
     <div className='div-contain-nav'>
@@ -23,8 +25,8 @@ function Nav() {
       <details className="dropdown-buttons"> 
         <summary className="dropdown-summary">Menu</summary>
           <div className="dropdown-content">
-            <Link to="/home"><Button>Home</Button></Link>
-            <Link to="/create"><Button>Create</Button></Link>
+            {showHome && <Link to="/home"><Button>Home</Button></Link>}
+            {showCreate && <Link to="/create"><Button>Create</Button></Link>}
           </div>
       </details>
 

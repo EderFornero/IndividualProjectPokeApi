@@ -66,19 +66,9 @@ const reducer = (state = initialState, action) => {
     //////////////////////////////////////////////////////////
     //create pokemon
     case CREATE_POKEMON: {
-      let newPokemon = {
-        name: action.payload.name,
-        image: action.payload.image,
-        types: action.payload.types, 
-        attack: action.payload.attack,
-        defense: action.payload.defense,
-        speed: action.payload.speed,
-        health_points: action.payload.health_points,
-      };
-
       return {
         ...state,
-        allPokemons: [...state.allPokemons, newPokemon], 
+        allPokemons: action.payload, 
       };
     }
 

@@ -9,13 +9,14 @@ import { getTypeClass } from "../Helpers";
 function Card({ pokemon }) {
   const { id, name, image, types } = pokemon;
   //condicional class
-  // const condicionalClass = getTypeClass(pokemon);
+  const condicionalClass = getTypeClass(pokemon);
 
   return (
     
       <div
-        className={`card-content
- 
+        className={`
+        card-content
+        ${condicionalClass} 
      `}
       >
         {pokemon && (

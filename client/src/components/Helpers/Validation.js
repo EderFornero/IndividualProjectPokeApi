@@ -5,7 +5,7 @@ const validation = (pokemon) => {
   if(!pokemon.name || pokemon.name.trim() === ""){ 
     errors.name = "Must be a name";
   }else if(!/^[a-zA-Z]{1,20}$/.test(pokemon.name)){ 
-    errors.name = "The name must contain only letters and have a maximum of 20 characters";
+    errors.name = "The name must contain only letters without spaces and have a maximum of 20 characters";
   }
 
   //validate image
@@ -27,7 +27,7 @@ const validation = (pokemon) => {
 
   //validate defense
   if(!pokemon.defense || isNaN(pokemon.defense) || Number(pokemon.defense <= 0)){ 
-    errors.defense = "defense should be a positive number"; 
+    errors.defense = "Defense should be a positive number"; 
   }
 
   //validate speed if exist

@@ -1,9 +1,42 @@
-.select-types{ 
-  width: 300px;
-  height: 200px;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto; 
+  position: relative;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  position: absolute;
 }
 
 
+label input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.select-types{ 
+  width: 300px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-button{
+  display: flex;
+  justify-content: center;
+  margin: 18px;
+}
 
 .error-message-create{ 
   display: block;

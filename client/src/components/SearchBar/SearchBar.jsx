@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 //react redux
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 //actions
 import {getPokeByName, getPokemons, setPokePage} from '../../redux/actions/index.js';
 //css
@@ -11,7 +11,6 @@ import styled from 'styled-components';
 const SearchBar = () => {
 
   const dispatch = useDispatch();
-  const allPokemons = useSelector(state => state.allPokemons)
   //state for input value
   const [pokemon, setPokemon] = useState("");
   const [listener, setListener] = useState(""); 
@@ -20,10 +19,6 @@ const SearchBar = () => {
   const handleOnChange = (value) => {
     setListener(value); 
   }
-
-  useEffect(() => {
-    console.log(allPokemons);
-  },[allPokemons])
 
 
   useEffect(() => {
