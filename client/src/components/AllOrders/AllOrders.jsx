@@ -2,7 +2,7 @@ import React, { useState } from "react";
 //react redux
 import { useDispatch } from "react-redux";
 //actions
-import { filterPokemon, orderPokemon } from "../../redux/actions";
+import { filterPokemon, orderPokemon, setPokePage } from "../../redux/actions";
 //css
 import './AllOrders.css';
 import {Button} from '../TypeFilter/TypeFilter.jsx';
@@ -19,6 +19,7 @@ function OriginFilter() {
 
   const handleOriginFilter = (e) => {
     dispatch(filterPokemon(e.target.name));
+    dispatch(setPokePage(0));
   };
 
 

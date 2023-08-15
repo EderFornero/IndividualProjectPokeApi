@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 //actions
-import { filterPokemonType, getTypes, setPokePage } from '../../redux/actions';
+import { filterPokemonType, setPokePage } from '../../redux/actions';
 //react redux
 import { useDispatch, useSelector } from 'react-redux';
 //css
@@ -22,10 +22,6 @@ function TypeFilter() {
     setIsOpen(!isOpen)
   }
 
-  //charge all types
-  useEffect(() => {
-   dispatch(getTypes())
-  }, [dispatch])
 
 
 

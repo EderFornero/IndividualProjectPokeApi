@@ -5,6 +5,7 @@
   gap: 20px;
   align-items: center;
 
+
   @media (max-width: 768px){ 
     display: flex;
     justify-content: center;
@@ -14,3 +15,12 @@
   }
 }
 
+
+
+.there-are-not{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  font-size: 18px;
+}

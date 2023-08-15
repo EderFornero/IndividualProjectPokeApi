@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 //react redux
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 //actions
 import {getPokeByName, getPokemons, setPokePage} from '../../redux/actions/index.js';
 //css
@@ -11,7 +11,7 @@ import styled from 'styled-components';
 const SearchBar = () => {
 
   const dispatch = useDispatch();
-
+  const allPokemons = useSelector(state => state.allPokemons)
   //state for input value
   const [pokemon, setPokemon] = useState("");
   const [listener, setListener] = useState(""); 
@@ -22,6 +22,11 @@ const SearchBar = () => {
   }
 
   useEffect(() => {
+    console.log(allPokemons);
+  },[allPokemons])
+
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setPokemon(listener)
     }, 300)
@@ -29,7 +34,7 @@ const SearchBar = () => {
     return () => {
       clearTimeout(timer); 
     }
-  }, [listener])
+  }, [dispatch, listener])
 
 
   useEffect(() => {
@@ -37,7 +42,6 @@ const SearchBar = () => {
       dispatch(getPokeByName(pokemon))
       dispatch(setPokePage(0));
     }else{
-      dispatch(getPokeByName('')); 
       dispatch(getPokemons());
     }
   }, [dispatch, pokemon]); 
@@ -51,7 +55,6 @@ const SearchBar = () => {
       onChange={(e) => handleOnChange(e.target.value)}
       placeholder="Search some Pokemon"
     />
-   
   </div>
   )
 }

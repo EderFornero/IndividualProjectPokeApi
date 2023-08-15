@@ -32,7 +32,7 @@ function Cards() {
    
   }
 
-
+  
   //Calculate totalPages based on the total number of pokémon after filters
   const filteredPokemons = 
   allPokemons

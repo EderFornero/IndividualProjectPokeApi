@@ -91,10 +91,10 @@ const getPokeById = async (id) => {
 const getPokeByDbId = async (id) => {
    try {
     const idDb = await Pokemon.findByPk(id, {
-      include: {
-        attributes: ["name"],
+      include: [{
         model: Type,
-      },
+        attributes: ["name"],
+      }],
     });
 
     return idDb;
@@ -138,6 +138,11 @@ const getPokeByName = async (name) => {
 const getPokeByDbName = async (name) => {
   try {
     const getName = await Pokemon.findOne({
+      include: [{
+        model: Type,
+        attributes: ["name"],
+        through: {attributes: []}
+      }],
       //implement method Sequelize.fn
       //compare with the method Sequelize.col
       //convert name to lower case as second parameter

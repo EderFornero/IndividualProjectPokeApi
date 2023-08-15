@@ -13,7 +13,7 @@ function Main() {
   const dispatch = useDispatch(); 
 
 
-    //charge types before anything else
+  //charge types before anything else
   useEffect(() => {
     dispatch(getTypes());
   }, [dispatch])

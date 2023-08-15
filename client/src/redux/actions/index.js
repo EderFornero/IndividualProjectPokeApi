@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, SET_ORDER, SET_FILTER, SET_TYPE, CLEAN_DETAIL, SET_POKE_PAGE} from '../actions-types/index'; 
+import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, SET_ORDER, SET_FILTER, SET_TYPE, CLEAN_DETAIL, SET_POKE_PAGE, CREATE_POKEMON} from '../actions-types/index'; 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -82,6 +82,22 @@ export const getTypes = () => {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
+//create pokemon
+export function createPokemon(newPokemon){
+  return async function (dispatch){ 
+    try {
+      const {data} = await axios.post('http://localhost:3001/pokemon', newPokemon)
+      return dispatch({
+        type: CREATE_POKEMON,
+        payload: data.new_pokemon
+      })
+    } catch (error) {
+      console.log("Error response data:", error.response.data);
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
 //filter by origin
 export const filterPokemon = (filter) => { 
   return{
@@ -122,4 +138,11 @@ export const cleanDetail = () => {
 export const setPokePage = (page) => ({
   type: SET_POKE_PAGE,
   payload: page,
+});
+
+///////////////////////////////////////////////////////////////////////////////////////
+//clean detail
+export const setLoading = (loading) => ({
+  type: SET_POKE_PAGE,
+  payload: loading,
 });

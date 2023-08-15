@@ -1,4 +1,143 @@
+.div-detail-father{
+  width: auto;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.div-detail-father::before{
+  content: "";
+  inset: 0;
+  background: url('../../Images/pikachuBg.webp');
+  position: absolute;
+  filter: blur(5px);
+}
+
 .id-not-valid{
   color: red;
   font-weight: bold;
+}
+
+.div-detail{
+  display: flex;
+  justify-content: center;
+  
+  @media (max-width: 768px){ 
+    margin: 20px;
+  }
+}
+
+/*container*/
+.card-detail-container{
+  position: relative;
+  margin: 30px;
+  width: 800px;
+  min-height: 600px;
+  background-color: var(--main-bg);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 0 0 5px #ffffff80;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  @media (max-width: 768px){ 
+    width: 500px;
+    min-height: 300px;
+  }
+
+  @media (max-width: 460px){ 
+    width: 300px;
+    min-height: 100px;
+  }
+}
+
+
+
+.card-detail-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+
+/*content*/
+.card-detail-content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-detail-container:hover .card-detail-content {
+  transform: rotateX(0deg);
+}
+
+
+.card-detail-attributes {
+  margin: 10px 0 0;
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+} 
+
+
+/*image*/
+.card-detail-image img{
+  object-fit: contain;
+}
+
+.card-detail-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-detail-name h3{
+  font-family: PokeFont;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--main-hover);
+}
+
+.card-detail-in-attributes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 25px;
+}
+
+.div-bottom-link-to-home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom-link-to-home{
+  color: var(--main-hover);
+  font-size: 15px;
+  text-decoration: none;
+  position: relative;
+}
+
+.bottom-link-to-home:hover{
+  transform: scale(1.2);
+  transition: all ease-out .3s;
+}
+
+@font-face {
+  font-family: PokeFont;
+  src: url('../../Fonts/Pokemon\ Solid.ttf');
 }

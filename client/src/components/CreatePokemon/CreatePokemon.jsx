@@ -1,19 +1,21 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 //react-redux
-import { useSelector} from 'react-redux'; 
+import { useDispatch, useSelector} from 'react-redux'; 
 //router
 import { useNavigate } from 'react-router'
 //helpers
 import validation from '../Helpers/Validation.js'
 //css
 import './CreatePokemon.css'
-//axios
-import axios from 'axios';
+//actions
+import { createPokemon } from '../../redux/actions/index.js';
+
 
 function CreatePokemon() {
 
-  const types = useSelector(state => state.getTypes); 
+  const types = useSelector(state => state.getTypes);  
   const navigate = useNavigate(); 
+  const dispatch = useDispatch();
 
   //pokemon successfully created state
   const [pokemonCreated, setPokemonCreated] = useState(false); 
@@ -88,18 +90,21 @@ function CreatePokemon() {
     e.preventDefault(); 
   }
 
+
   //handle on create
   const handleOnCreate = async () => {
     try {
-      const res = await axios.post('http://localhost:3001/pokemon', pokemon);
-      if(res.status === 201) { 
-        setPokemonCreated(true)
-        //send automatically user to home after pokemon successfully created
-        setTimeout(() => {
-          navigate('/home')
-        }, 2000);
-      } 
+      const res = await dispatch(createPokemon(pokemon));
+      console.log("res::::::", res);
+      if (res.status === 201) { 
+        setPokemonCreated(true)}
+      //   //send automatically user to home after pokemon successfully created
+      //   setTimeout(() => {
+      //     navigate('/home')
+      //   }, 2000);
+      // } 
     } catch (error) {
+      console.log("error:::", error.message);
       setErrorPokemon(true)
       setTimeout(() => { 
         setErrorPokemon(false)
@@ -188,14 +193,13 @@ function CreatePokemon() {
          {/* Types */}
          <label>
           Types:
-          <select className='select-types' multiple name="types" value={pokemon.types} onChange={handleOnChangeType}>
-            {types.map((type, i) => (
-              <option key={i} value={type.name}>{type.name}</option>
-            ))}
-            
-          </select>
-          {error.types && <p className="error-message">{error.types}</p>}
-        </label>
+            <select className='select-types' multiple name="types" value={pokemon.types} onChange={handleOnChangeType}>
+                 {types && types.map((type, i) => (
+                 <option key={i} value={type.name}>{type.name}</option>
+                 ))}
+             </select>
+             {error.types && <p className="error-message">{error.types}</p>}
+          </label>
 
         <button type='submit' disabled={disableButton} onClick={handleOnCreate}>Create</button>
       </form>
