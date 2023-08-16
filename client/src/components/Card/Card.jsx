@@ -38,7 +38,7 @@ function Card({ pokemon }) {
             </div>
             <div className="link-to-detail-page">
               <Link className="link-to-detail-page-tag" to={`detail/${id}`}>
-                Show more →
+                Show more &#10150;
               </Link>
             </div>
           </>

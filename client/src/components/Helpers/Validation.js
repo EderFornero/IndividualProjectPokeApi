@@ -17,7 +17,7 @@ const validation = (pokemon) => {
 
   //validate health points
   if(!pokemon.health_points || isNaN(pokemon.health_points) || Number(pokemon.health_points <= 0)){ 
-    errors.health_points = "Life should be a positive number"; 
+    errors.health_points = "Health points should be a positive number"; 
   }  
 
   //validate attack
@@ -32,17 +32,17 @@ const validation = (pokemon) => {
 
   //validate speed if exist
   if((pokemon.speed && isNaN(pokemon.speed)) || Number(pokemon.speed < 0)){ 
-    errors.speed = "Speed should be a positive number"; 
+    errors.speed = "Speed must be a positive number"; 
   }
 
   //validate height if exist
   if((pokemon.height && isNaN(pokemon.height)) || Number(pokemon.height < 0)){ 
-    errors.height = "Height should be a positive number"; 
+    errors.height = "Height can be zero or a positive number"; 
   }
 
   //validate weight if exist
   if((pokemon.weight && isNaN(pokemon.weight)) || Number(pokemon.weight < 0)){ 
-    errors.weight = "Weight should be a positive number"; 
+    errors.weight = "Weight can be zero or a positive number"; 
   }
 
   //validate types

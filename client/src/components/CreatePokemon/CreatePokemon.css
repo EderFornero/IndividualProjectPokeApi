@@ -2,10 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
   height: auto; 
-  position: relative;
 }
 
 .error-message {
@@ -14,6 +12,9 @@
   position: absolute;
 }
 
+label select{
+  width: 450px;
+}
 
 label input {
   width: 100%;
@@ -23,13 +24,36 @@ label input {
   border-radius: 4px;
 }
 
+.div-container-create-title{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  text-align: center;
+  font-size: 25px;
+}
+
+div label{
+  font-size: 18px;
+}
 
 .select-types{ 
-  width: 300px;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.select-types option{ 
+  text-align: center;
+  padding: 5px;
+}
+
+
+.div-selected-types{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 300px; 
+  padding: 5px;
 }
 
 .create-button{
@@ -48,6 +72,14 @@ label input {
   border-radius: 4px;
   width: 300px;
 }
+
+
+
+
+
+
+
+
 
 /*after created*/
 .success-message {

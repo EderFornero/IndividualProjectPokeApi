@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 //react-redux
 import { useDispatch, useSelector} from 'react-redux'; 
 //router
@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router'
 import validation from '../Helpers/Validation.js'
 //css
 import './CreatePokemon.css'
-import {Button} from '../Nav/Nav.jsx'
+import  styled  from 'styled-components';
+import { Button } from '../Nav/Nav.jsx';
 //actions
 import { createPokemon } from '../../redux/actions/index.js';
+
 
 
 function CreatePokemon() {
@@ -90,7 +92,7 @@ function CreatePokemon() {
 
   //remove type selected
   const handleRemoveSelectedType = (removedType) => {
-    
+
     const update = selectedTypes.filter(type => type !== removedType);
     setSelectedTypes(update);
     
@@ -119,14 +121,15 @@ function CreatePokemon() {
     e.preventDefault(); 
   }
 
-
   //handle on create
   const handleOnCreate = async () => {
     try {
       const res = await dispatch(createPokemon(pokemon));
-      console.log("res: ", res);
       if (res.payload) { 
         setPokemonCreated(true);
+        setTimeout(() => {
+          navigate('/home');
+        }, 2000);
       }
     } catch (error) {
       setErrorPokemon(true);
@@ -136,18 +139,13 @@ function CreatePokemon() {
     }
   };
   
-  useEffect(() => {
-    if (pokemonCreated) {
-      const timer = setTimeout(() => {
-        navigate('/home');
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [pokemonCreated, navigate]);
+
 
   return (
     <div className='form-container'>
+      <div className='div-container-create-title'>
       <h3>¡Create your own Pokemon!</h3>
+      </div>
       <form onSubmit={handleOnSubmit}>
       
       <div>
@@ -248,31 +246,32 @@ function CreatePokemon() {
 
         <br />
 
-        <div>
+      <div className='div-container-select-types'>
         {/* Types */}
-        <label>
+        <label className='label-types'>
           Types:
           <select
             className='select-types'
+            multiple
             name="types"
             value={selectedTypes}
             onChange={handleOnChangeType}
           >
             {types && types.map((type, i) => (
-              <option key={i} value={type.name}>{type.name}</option>
+              <option key={i} value={type.name}>{type.name.charAt(0).toUpperCase() + type.name.slice(1)}</option>
             ))}
           </select>
 
           {selectedTypes.length > 0 && (
-            <div className="selected-types">
+            <div className="div-selected-types">
               {selectedTypes.map((type, i) => (
-                  <button
+                  <ButtonTypes
                     key={i}
                     className="remove-type-button"
                     onClick={() => handleRemoveSelectedType(type)}
                   >
-                   {type}
-                  </button>
+                   {type.charAt(0).toUpperCase() + type.slice(1)} &#10060;
+                  </ButtonTypes>
               ))}
             </div>
           )}
@@ -283,7 +282,7 @@ function CreatePokemon() {
         <br />
 
       <div className='create-button'>
-        <Button  type='submit' disabled={disableButton} onClick={handleOnCreate}>Create</Button>
+        <Button type='submit' disabled={disableButton} onClick={handleOnCreate}>Create</Button>
       </div>
       </form>
      
@@ -310,3 +309,49 @@ function CreatePokemon() {
 }
 
 export default CreatePokemon;
+
+
+export const ButtonTypes = styled.button`
+ appearance: none;
+ background-color: var(--main-bg);
+ border: 0.125em solid var(--main-hover);
+ border-radius: 0.9375em;
+ box-sizing: border-box;
+ color: var(--button-font);
+ cursor: pointer;
+ display: inline-block;
+ font-size: 10px;
+ font-weight: 500;
+ line-height: normal;
+ margin-left: 5px;
+ margin-top: 2px;
+ min-height: 15px;
+ min-width: 30px;
+ outline: none;
+ padding: 1em 2.3em;
+ text-align: center;
+ text-decoration: none;
+ transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ will-change: transform;
+
+
+&:disabled {
+ pointer-events: none;
+ background-color: var(--main-disable);
+}
+
+&:hover {
+ color: #fff;
+ background-color: #000;
+ box-shadow: var(--button-hover) 0 8px 15px;
+ transform: translateY(-2px);
+}
+
+&:active {
+ box-shadow: none;
+ transform: translateY(0);
+}
+`
