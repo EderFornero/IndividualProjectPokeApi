@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 //react-redux
 import { useDispatch, useSelector} from 'react-redux'; 
 //router
@@ -11,12 +11,16 @@ import  styled  from 'styled-components';
 import { Button } from '../Nav/Nav.jsx';
 //actions
 import { createPokemon } from '../../redux/actions/index.js';
+//components 
+import { Cloudinary } from '../Cloudinary/Cloudinary.jsx';
 
 
 
 function CreatePokemon() {
 
   const types = useSelector(state => state.getTypes);  
+  const image = useSelector(state => state.image);
+
   const navigate = useNavigate(); 
   const dispatch = useDispatch();
 
@@ -33,15 +37,19 @@ function CreatePokemon() {
   const [pokemon, setPokemon] = useState({
     name: '', 
     image: '', 
-    health_points: 0,
-    attack: 0,
-    defense: 0, 
+    health_points: '',
+    attack: '',
+    defense: '', 
     speed: 0,
     height: 0,
     weight: 0,
     types: [], 
   }); 
 
+  useEffect(() => {
+    setPokemon({...pokemon, image})
+  }, [image])
+  
   //handle on change 
   const handleOnChange = (e) => { 
     const {name, value} = e.target; 
@@ -149,30 +157,25 @@ function CreatePokemon() {
       </div>
       <form onSubmit={handleOnSubmit}>
       
-      <div>
+      <Div>
         {/* Name */}
         <label>
           Name:
           <input placeholder='Ex: Messi' type="text" name="name" value={pokemon.name} onChange={handleOnChange} />
           {error.name && <p className="error-message">{error.name}</p>}
-        </label>
+          </label>
 
-      </div>
-
-        <br />
-
-      <div>
-        {/* Image */}
-        <label>
-          Image:
-          <input placeholder='Ex: https://shorturl.at/dotLM' type="text" name="image" value={pokemon.image} onChange={handleOnChange} />
-          {error.image && <p className="error-message">{error.image}</p>}
-        </label>
-      </div>
+      </Div>
 
         <br />
 
-      <div>
+      <Div>
+        <Cloudinary />
+      </Div>
+
+        <br />
+
+      <Div>
 
         {/* Health Points */}
         <label>
@@ -181,11 +184,11 @@ function CreatePokemon() {
           {error.health_points && <p className="error-message">{error.health_points}</p>}
         </label>
 
-      </div>
+      </Div>
 
         <br />
 
-      <div>
+      <Div>
 
         {/* Attack */}
         <label>
@@ -194,24 +197,25 @@ function CreatePokemon() {
           {error.attack && <p className="error-message">{error.attack}</p>}
         </label>
 
-      </div>
+      </Div>
 
         <br />
 
-      <div>
+      <Div>
 
         {/* Defense */}
         <label>
           Defense:
           <input placeholder='Ex: 20' type="number" min="1" name="defense" value={pokemon.defense} onChange={handleOnChange} />
+          {error.defense && <p className="error-message">{error.defense}</p>}
         </label>
-        {error.defense && <p className="error-message">{error.defense}</p>}
+       
 
-      </div>
+      </Div>
 
         <br />
 
-      <div>
+      <Div>
 
         {/* Speed */}
         <label>
@@ -220,22 +224,22 @@ function CreatePokemon() {
           {error.speed && <p className="error-message">{error.speed}</p>}
         </label>
 
-      </div>
+      </Div>
       
         <br />
 
-      <div>
+      <Div>
         {/* Height */}
         <label>
           Height:
           <input placeholder='Ex: 11' type="number" min="0" name="height" value={pokemon.height} onChange={handleOnChange} />
           {error.height && <p className="error-message">{error.height}</p>}
         </label>
-      </div>
+      </Div>
 
         <br />
    
-      <div>
+      <Div>
         {/* Weight */}
         <label>
           Weight:
@@ -243,11 +247,11 @@ function CreatePokemon() {
           {error.weight && <p className="error-message">{error.weight}</p>}
         </label>
 
-      </div>
+      </Div>
 
         <br />
 
-      <div className='div-container-select-types'>
+      <Div className='div-container-select-types'>
         {/* Types */}
         <label className='label-types'>
           Types:
@@ -278,20 +282,20 @@ function CreatePokemon() {
           )}
           {error.types && <p className="error-message">{error.types}</p>}
         </label>
-      </div>
+      </Div>
 
         <br />
 
-      <div className='create-button'>
+      <Div className='create-button'>
         <Button type='submit' disabled={disableButton} onClick={handleOnCreate}>Create</Button>
-      </div>
+      </Div>
       </form>
      
       {/*error on create*/}
       {
         errorPokemon && 
         <div className="error-message-create">
-          Error on create your own pokemon 
+          Pokemon already exist 
         </div>
       }
 
@@ -356,3 +360,10 @@ export const ButtonTypes = styled.button`
  transform: translateY(0);
 }
 `
+
+
+const Div = styled.div`
+  width: 450px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+` 

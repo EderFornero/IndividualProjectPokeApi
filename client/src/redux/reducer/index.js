@@ -10,6 +10,7 @@ import {
   SET_POKE_PAGE,
   SET_LOADING,
   CREATE_POKEMON,
+  SET_IMAGE,
 } from "../actions-types/index";
 
 const initialState = {
@@ -27,6 +28,9 @@ const initialState = {
 
   /////////////loading//////////////////
   loading: false,
+
+  ///////////formImage/////////////////
+  image: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -118,6 +122,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload,
+      };
+
+    //////////////////////////////////////////////////////////
+    //set poke page
+    case SET_IMAGE:
+      return {
+        ...state,
+        image: action.payload,
       };
 
     default:

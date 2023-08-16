@@ -29,7 +29,15 @@ function Cards() {
   const nextPage = () => {
     //go to next page
     dispatch(setPokePage(pokePage + 1)); 
-   
+  }
+
+  const startPage = () => {
+    dispatch(setPokePage(0))
+  }
+  
+  const finalPage = () => {
+    //go to next page
+    dispatch(setPokePage(totalPages - 1)); 
   }
 
   
@@ -39,6 +47,7 @@ function Cards() {
     .filter(filterOptions[filter])
     .filter(filterOptionByType(type));
   const totalPages = Math.ceil(filteredPokemons.length / perPage);
+
 
   //calculating start and final based on pokemons per page
   const start = pokePage * perPage; 
@@ -50,7 +59,7 @@ function Cards() {
         <Button onClick={previousPage} disabled={pokePage === 0}>
           Previous
         </Button>
-        <div>{pokePage} ... <span>{totalPages !== 0 ? totalPages - 1 : 0}</span></div>
+        <div className="span-go-to-start-final"><span onClick={startPage}>1</span> ... {pokePage + 1} ... <span className="span-go-to-final" onClick={finalPage}>{totalPages}</span></div>
         <Button onClick={nextPage} disabled={pokePage === totalPages - 1 || filteredPokemons.length === 0}>
           Next
         </Button>

@@ -76,19 +76,19 @@ function Detail() {
                   {/*height*/}
                   <div className="card-detail-in-attributes">
                     <p>Height: </p>
-                    <h3>{detail.height ? detail.height : "Unknow height"}</h3>
+                    <h3>{detail.height ? detail.height : "Unknown height"}</h3>
                   </div>
 
                   {/*weight*/}
                   <div className="card-detail-in-attributes">
                     <p>Weight: </p>
-                    <h3>{detail.weight ? detail.weight : "Unknow weight"}</h3>
+                    <h3>{detail.weight ? detail.weight : "Unknown weight"}</h3>
                   </div>
 
                   {/*speed*/}
                   <div className="card-detail-in-attributes">
                     <p>Speed: </p>
-                    <h3>{detail.speed ? detail.speed : "Unknow speed"}</h3>
+                    <h3>{detail.speed ? detail.speed : "Unknown speed"}</h3>
                   </div>
 
                   {/*doble verify for types*/}

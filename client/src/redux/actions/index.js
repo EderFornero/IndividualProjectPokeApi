@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, SET_ORDER, SET_FILTER, SET_TYPE, CLEAN_DETAIL, SET_POKE_PAGE, CREATE_POKEMON} from '../actions-types/index'; 
+import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, SET_ORDER, SET_FILTER, SET_TYPE, CLEAN_DETAIL, SET_POKE_PAGE, CREATE_POKEMON, SET_IMAGE} from '../actions-types/index'; 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -145,4 +145,12 @@ export const setPokePage = (page) => ({
 export const setLoading = (loading) => ({
   type: SET_POKE_PAGE,
   payload: loading,
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//clean detail
+export const setImage = (image) => ({
+  type: SET_IMAGE,
+  payload: image,
 });

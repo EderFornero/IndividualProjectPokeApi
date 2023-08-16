@@ -1,0 +1,20 @@
+
+.div-container-goback{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.div-container-goback::before{
+  content: "";
+  inset: 0;
+  background: url('../../Images/pikachuBg.webp');
+  position: absolute;
+  filter: blur(5px);
+  z-index: -1;
+}
+
+

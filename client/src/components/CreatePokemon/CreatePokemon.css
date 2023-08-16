@@ -12,12 +12,11 @@
   position: absolute;
 }
 
-label select{
-  width: 450px;
-}
+
 
 label input {
   width: 100%;
+  height: 25px;
   padding: 10px;
   margin-bottom: 10px; 
   border: 1px solid #ccc;
@@ -37,22 +36,30 @@ div label{
 }
 
 .select-types{ 
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+
 .select-types option{ 
+  width: 100%;
+  cursor: pointer;
   text-align: center;
   padding: 5px;
+  margin: 5px;
 }
 
 
 .div-selected-types{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  max-width: 300px; 
+  width: 98%;
   padding: 5px;
 }
 

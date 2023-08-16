@@ -32,3 +32,13 @@
     gap: 15px;
   }
 }
+
+.span-go-to-start-final span{
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.span-go-to-start-final span:hover{
+  text-decoration: underline;
+  color: var(--start-final);
+}

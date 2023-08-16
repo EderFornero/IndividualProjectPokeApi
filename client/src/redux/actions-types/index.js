@@ -9,3 +9,4 @@ export const SET_TYPE = 'SET_TYPE';
 export const CLEAN_DETAIL = 'CLEAN_DETAIL'; 
 export const SET_POKE_PAGE = 'SET_POKE_PAGE'; 
 export const SET_LOADING = 'SET_LOADING'; 
+export const SET_IMAGE = 'SET_IMAGE'; 

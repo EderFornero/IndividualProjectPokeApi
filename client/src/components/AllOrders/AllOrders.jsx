@@ -15,6 +15,7 @@ function OriginFilter() {
 
   const handleFilter = (e) => {
     dispatch(orderPokemon(e.target.name));
+    dispatch(setPokePage(0));
   };
 
   const handleOriginFilter = (e) => {

@@ -95,6 +95,8 @@
 /*image*/
 .card-detail-image img{
   object-fit: contain;
+  max-width: 400px;
+  max-height: 400px;
 }
 
 .card-detail-name{
