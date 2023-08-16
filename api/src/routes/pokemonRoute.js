@@ -71,15 +71,15 @@ router.post("/", async (req, res) => {
         //return missing data if 
         const missingData = 'Missing data'; 
 
-        if(!name) return res.status(400).send("Name", missingData); 
-        if(!health_points) return res.status(400).send("Health Points", missingData); 
-        if(!image) return res.status(400).send("Image", missingData); 
-        if(!attack) return res.status(400).send("Attack", missingData); 
-        if(!defense) return res.status(400).send("Defense", missingData); 
-        if(!types) return res.status(400).send("Types", missingData); 
+        if(!name) return res.status(400).send({field: "Name", error: missingData}); 
+        if(!health_points) return res.status(400).send({field: "Health Points", error: missingData}); 
+        if(!image) return res.status(400).send({field: "Image", error: missingData}); 
+        if(!attack) return res.status(400).send({field: "Attack", error: missingData}); 
+        if(!defense) return res.status(400).send({field: "Defense", error: missingData}); 
+        if(!types) return res.status(400).send({field: "Types", error: missingData}); 
       
         //return missing data if types is an empty array
-        if(!types.length) return res.status(400).send(missingData); 
+        if(!types.length) return res.status(400).send({ field: "Types", error: missingData }); 
 
         const newPokemon = await Pokemon.create({
           name,

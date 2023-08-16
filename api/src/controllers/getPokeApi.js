@@ -82,8 +82,6 @@ const getPokeById = async (id) => {
     } 
 
     return pokemon;
-
-
 };
 
 //get database id
