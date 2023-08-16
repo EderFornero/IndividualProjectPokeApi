@@ -17,17 +17,17 @@ const validation = (pokemon) => {
 
   //validate health points
   if(!pokemon.health_points || isNaN(pokemon.health_points) || Number(pokemon.health_points <= 0)){ 
-    errors.health_points = "Health points should be a positive number"; 
+    errors.health_points = "Health points should be a positive number higher than 0"; 
   }  
 
   //validate attack
   if(!pokemon.attack || isNaN(pokemon.attack) || Number(pokemon.attack <= 0)){ 
-    errors.attack = "Attack should be a positive number"; 
+    errors.attack = "Attack should be a positive number higher than 0"; 
   }
 
   //validate defense
   if(!pokemon.defense || isNaN(pokemon.defense) || Number(pokemon.defense <= 0)){ 
-    errors.defense = "Defense should be a positive number"; 
+    errors.defense = "Defense should be a positive number higher than 0"; 
   }
 
   //validate speed if exist

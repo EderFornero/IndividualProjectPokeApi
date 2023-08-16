@@ -33,12 +33,12 @@ function CreatePokemon() {
   const [pokemon, setPokemon] = useState({
     name: '', 
     image: '', 
-    health_points: '',
-    attack: '',
-    defense: '', 
-    speed: '',
-    height: '',
-    weight: '',
+    health_points: 0,
+    attack: 0,
+    defense: 0, 
+    speed: 0,
+    height: 0,
+    weight: 0,
     types: [], 
   }); 
 
@@ -132,6 +132,7 @@ function CreatePokemon() {
         }, 2000);
       }
     } catch (error) {
+      console.log("error", error.message);
       setErrorPokemon(true);
       setTimeout(() => {
         setErrorPokemon(false); 
@@ -176,7 +177,7 @@ function CreatePokemon() {
         {/* Health Points */}
         <label>
           Health Points:
-          <input placeholder='Ex: 45' type="text" name="health_points" value={pokemon.health_points} onChange={handleOnChange} />
+          <input placeholder='Ex: 45' type="number" min="1" name="health_points" value={pokemon.health_points} onChange={handleOnChange} />
           {error.health_points && <p className="error-message">{error.health_points}</p>}
         </label>
 
@@ -189,7 +190,7 @@ function CreatePokemon() {
         {/* Attack */}
         <label>
           Attack:
-          <input placeholder='Ex: 55' type="text" name="attack" value={pokemon.attack} onChange={handleOnChange} />
+          <input placeholder='Ex: 55' type="number" min="1" name="attack" value={pokemon.attack} onChange={handleOnChange} />
           {error.attack && <p className="error-message">{error.attack}</p>}
         </label>
 
@@ -202,7 +203,7 @@ function CreatePokemon() {
         {/* Defense */}
         <label>
           Defense:
-          <input placeholder='Ex: 20' type="text" name="defense" value={pokemon.defense} onChange={handleOnChange} />
+          <input placeholder='Ex: 20' type="number" min="1" name="defense" value={pokemon.defense} onChange={handleOnChange} />
         </label>
         {error.defense && <p className="error-message">{error.defense}</p>}
 
@@ -215,7 +216,7 @@ function CreatePokemon() {
         {/* Speed */}
         <label>
           Speed:
-          <input placeholder='Ex: 76' type="text" name="speed" value={pokemon.speed} onChange={handleOnChange} />
+          <input placeholder='Ex: 76' type="number" min="0" name="speed" value={pokemon.speed} onChange={handleOnChange} />
           {error.speed && <p className="error-message">{error.speed}</p>}
         </label>
 
@@ -227,7 +228,7 @@ function CreatePokemon() {
         {/* Height */}
         <label>
           Height:
-          <input placeholder='Ex: 11' type="text" name="height" value={pokemon.height} onChange={handleOnChange} />
+          <input placeholder='Ex: 11' type="number" min="0" name="height" value={pokemon.height} onChange={handleOnChange} />
           {error.height && <p className="error-message">{error.height}</p>}
         </label>
       </div>
@@ -238,7 +239,7 @@ function CreatePokemon() {
         {/* Weight */}
         <label>
           Weight:
-          <input placeholder='Ex: 25' type="text" name="weight" value={pokemon.weight} onChange={handleOnChange} />
+          <input placeholder='Ex: 25' type="number" min="0" name="weight" value={pokemon.weight} onChange={handleOnChange} />
           {error.weight && <p className="error-message">{error.weight}</p>}
         </label>
 
