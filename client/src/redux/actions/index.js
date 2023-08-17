@@ -6,7 +6,7 @@ import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, SET_ORDER, SET_FIL
 //get all pokemons
 export const getPokemons = () => {
   return async function(dispatch){
-    const {data} = await axios("http://localhost:3001/pokemon") //get pokemons from backend
+    const {data} = await axios("/pokemon") //get pokemons from backend
     return dispatch({
       //select type
       type: GET_POKEMON,
@@ -23,7 +23,7 @@ export const getPokemons = () => {
 export const getPokeByName = (name) => {
   return async function(dispatch){
     try {
-      const {data} = await axios(`http://localhost:3001/pokemon?name=${name}`) //get through query
+      const {data} = await axios(`/pokemon?name=${name}`) //get through query
 
       if(name.length === 0) throw Error('Must have a name')
      
@@ -46,7 +46,7 @@ export const getPokeByName = (name) => {
 export const getDetail = (id, setIsValid) => {
   return async function(dispatch){
     try {
-      const {data} = await axios(`http://localhost:3001/pokemon/${id}`) //get by id for show detail 
+      const {data} = await axios(`/pokemon/${id}`) //get by id for show detail 
       dispatch({
         //select type
         type: GET_DETAIL,
@@ -70,7 +70,7 @@ export const getDetail = (id, setIsValid) => {
 export const getTypes = () => {
   return async function(dispatch){
     try {
-      const {data} = await axios('http://localhost:3001/type')
+      const {data} = await axios('/type')
       return dispatch({ 
         type: GET_TYPES, 
         payload: data
@@ -86,7 +86,7 @@ export const getTypes = () => {
 export function createPokemon(newPokemon){
   return async function (dispatch){ 
     try {
-      const {data} = await axios.post('http://localhost:3001/pokemon', newPokemon)
+      const {data} = await axios.post('/pokemon', newPokemon)
       return dispatch({
         type: CREATE_POKEMON,
         payload: data.new_pokemon

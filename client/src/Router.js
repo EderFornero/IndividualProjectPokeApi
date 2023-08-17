@@ -8,11 +8,15 @@ import Home from './pages/Home/Home.jsx';
 import Detail from './pages/Detail/Detail.jsx'; 
 import CreatePokemon from './components/CreatePokemon/CreatePokemon';
 
+
+
 import {
   createBrowserRouter
 } from 'react-router-dom'
 
-
+//base url
+import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost:3001'; 
 
 const router = createBrowserRouter([
   {
