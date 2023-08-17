@@ -129,6 +129,8 @@ function CreatePokemon() {
     e.preventDefault(); 
   }
 
+
+
   //handle on create
   const handleOnCreate = async () => {
     try {
@@ -137,11 +139,11 @@ function CreatePokemon() {
         setPokemonCreated(true);
         setTimeout(() => {
           navigate('/home');
-        }, 2000);
+        }, 1000);
       }
     } catch (error) {
-      console.log("error", error.message);
       setErrorPokemon(true);
+
       setTimeout(() => {
         setErrorPokemon(false); 
       }, 1000)
@@ -169,9 +171,10 @@ function CreatePokemon() {
 
         <br />
 
-      <Div>
+      <DivCloudinary>
         <Cloudinary />
-      </Div>
+        {!image && <p className="error-message">{error.image}</p>}
+      </DivCloudinary>
 
         <br />
 
@@ -291,9 +294,10 @@ function CreatePokemon() {
       </Div>
       </form>
      
+     
       {/*error on create*/}
       {
-        errorPokemon && 
+       errorPokemon && 
         <div className="error-message-create">
           Pokemon already exist 
         </div>
@@ -304,7 +308,7 @@ function CreatePokemon() {
       pokemonCreated && 
       <>
         <div className='div-loader'><div className='loader'></div></div>
-        <div className="success-message">
+        <div className="success-message" id='success-element'>
         Pokemon successfully created
         </div>
       </>
@@ -366,4 +370,14 @@ const Div = styled.div`
   width: 450px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
+
+  @media (max-width: 600px){
+    width: 300px;
+  }
+  
+` 
+
+const DivCloudinary = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
 ` 

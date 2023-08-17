@@ -22,9 +22,6 @@ function TypeFilter() {
     setIsOpen(!isOpen)
   }
 
-
-
-
   const handleFilter = (type) => {
     dispatch(filterPokemonType(type));
     dispatch(setPokePage(0));

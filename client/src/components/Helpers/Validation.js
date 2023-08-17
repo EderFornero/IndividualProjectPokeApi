@@ -8,6 +8,10 @@ const validation = (pokemon) => {
     errors.name = "The name must contain only letters without spaces and have a maximum of 20 characters";
   }
 
+  if(!pokemon.image){
+    errors.image = "Image is required"; 
+  }
+  
   //validate health points
   if(!pokemon.health_points || isNaN(pokemon.health_points) || Number(pokemon.health_points <= 0)){ 
     errors.health_points = "Health points should be a positive number higher than 0"; 

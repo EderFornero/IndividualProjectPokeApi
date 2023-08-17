@@ -50,6 +50,11 @@
   object-fit: contain;
   height: 350px;
   width: 350px;
+
+  @media (max-width: 600px){ 
+    height: 300px;
+    width: 300px;
+  }
 }
 
 /*types*/

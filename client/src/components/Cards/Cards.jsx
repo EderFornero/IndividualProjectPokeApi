@@ -46,12 +46,12 @@ function Cards() {
   allPokemons
     .filter(filterOptions[filter])
     .filter(filterOptionByType(type));
-  const totalPages = Math.ceil(filteredPokemons.length / perPage);
-
 
   //calculating start and final based on pokemons per page
   const start = pokePage * perPage; 
   const final = start + perPage; 
+  const totalPages = Math.ceil(filteredPokemons.length / perPage);
+
 
   return (
     <div className="div-contain-cards">
