@@ -49,6 +49,7 @@
 .button-link:hover{
   border: 2px solid #FFFF00;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  cursor: pointer;
 }
 
 .link-tag-button{

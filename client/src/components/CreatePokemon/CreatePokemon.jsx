@@ -139,7 +139,7 @@ function CreatePokemon() {
         setPokemonCreated(true);
         setTimeout(() => {
           navigate('/home');
-        }, 1000);
+        }, 2000);
       }
     } catch (error) {
       setErrorPokemon(true);
@@ -296,12 +296,12 @@ function CreatePokemon() {
      
      
       {/*error on create*/}
+      <div className='error-message-container'>
       {
        errorPokemon && 
-        <div className="error-message-create">
-          Pokemon already exist 
-        </div>
+          <p className="error-message-create">Pokemon already exist </p>
       }
+      </div>
 
       {/*after pokemon successfully created*/}
       {
