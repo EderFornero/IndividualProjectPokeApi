@@ -1,6 +1,6 @@
 .div-detail-father{
-  width: auto;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   position: relative;
@@ -32,7 +32,7 @@
 .card-detail-container{
   position: relative;
   margin: 30px;
-  width: 800px;
+  width: 700px;
   min-height: 600px;
   background-color: var(--main-bg);
   border-radius: 10px;
@@ -132,11 +132,13 @@
   font-size: 15px;
   text-decoration: none;
   position: relative;
+  padding-bottom: 10px;
 }
 
 .bottom-link-to-home:hover{
   transform: scale(1.2);
   transition: all ease-out .3s;
+  text-decoration: underline;
 }
 
 @font-face {

@@ -118,6 +118,12 @@ const StyledButtons = styled.div`
 `
 
 const UploadedImg = styled.img`
-  width: 350px;
+  width: 470px;
   height: 300px;
+  object-fit: cover;
+
+  @media (max-width: 600px){
+    width: 320px;
+    height: 250px;
+  }
 `

@@ -11,14 +11,14 @@ const getAllPokeApi = async () => {
     const pokemon = await axios(
       `${URL_API_NAME}/?offset=${URL_API_OFFSET}&limit=${URL_API_LIMIT}`
     );
-    //search for each pokemon object
-    //get url (pokemon) and push
+    
+    //get url
     const pokemonArray = [];
     pokemon.data.results.forEach((poke) => {
       pokemonArray.push(axios(poke.url).then((res) => res.data));
     });
 
-    //resolve all promises pending from API
+    //resolve 
     const resolve = Promise.all(pokemonArray)
     .then((res) => res.map((poke) => { 
       return {
@@ -37,7 +37,7 @@ const getAllPokeApi = async () => {
       }
     }))
 
-    //return map
+    //return
     return await resolve;
 
   } catch (error) {
@@ -46,7 +46,6 @@ const getAllPokeApi = async () => {
 };
 
 //get pokemon by db
-
 const getPokeDb = async () => {
   try {
     const find = await Pokemon.findAll({
@@ -60,6 +59,7 @@ const getPokeDb = async () => {
     return { error: error.message };
   }
 };
+
 
 
 //get pokemon by id in API
@@ -85,7 +85,6 @@ const getPokeById = async (id) => {
 };
 
 //get database id
-
 const getPokeByDbId = async (id) => {
    try {
     const idDb = await Pokemon.findByPk(id, {
@@ -102,7 +101,6 @@ const getPokeByDbId = async (id) => {
 }
 
 //get pokemon by name
-
 const getPokeByName = async (name) => {
   try {
     const getName = await axios(`${URL_API_NAME}/${name.toLowerCase()}`);
@@ -123,6 +121,7 @@ const getPokeByName = async (name) => {
         })
       }
       //returned
+
     } else {
       return null;
     }
@@ -132,7 +131,6 @@ const getPokeByName = async (name) => {
 };
 
 //get pokemon by db name
-
 const getPokeByDbName = async (name) => {
   try {
     const getName = await Pokemon.findOne({
@@ -141,9 +139,7 @@ const getPokeByDbName = async (name) => {
         attributes: ["name"],
         through: {attributes: []}
       }],
-      //implement method Sequelize.fn
-      //compare with the method Sequelize.col
-      //convert name to lower case as second parameter
+  
       where: Sequelize.where(
         Sequelize.fn("lower", Sequelize.col("pokemon.name")),
         Sequelize.fn("lower", name)

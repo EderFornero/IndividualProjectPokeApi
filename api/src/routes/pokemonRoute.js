@@ -12,10 +12,8 @@ router
             let pokemon = await getPokeByName(name); 
 
             //searching in DB
-            //if exist an error property were not found in API
             if(pokemon.error){
                 pokemon = await getPokeByDbName(name);
-                //if pokemon does not exist return 404
                 if(!pokemon){
                     return res.status(404).json({"message": `Pokemon ${name} does not exist`});
                 };

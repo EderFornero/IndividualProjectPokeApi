@@ -10,7 +10,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100px;
+  height: 50px;
+  position: relative;
 }
 
 .error-message {
@@ -20,7 +21,7 @@
 
   @media (max-width: 600px){ 
     font-size: 12px;
-    margin-bottom: 5px;
+    margin-bottom: -5px;
   }
 }
 
@@ -60,7 +61,6 @@ div label{
   cursor: pointer;
   text-align: center;
   padding: 5px;
-  margin: 5px;
 }
 
 
@@ -69,12 +69,19 @@ div label{
   grid-template-columns: repeat(2, 1fr);
   width: 98%;
   padding: 5px;
+  @media (max-width: 600px) {
+    margin-left: 5px;
+  }
 }
 
 .create-button{
   display: flex;
   justify-content: center;
-  margin: 18px;
+  margin-left: 5px;
+
+  @media (max-width: 600px) {
+    margin-left: 10px; 
+  }
 }
 
 .error-message-create{ 
@@ -86,12 +93,9 @@ div label{
   padding: 10px;
   border-radius: 4px;
   width: 300px;
+  position: absolute;
+  top: 0;
 }
-
-
-
-
-
 
 
 
@@ -106,6 +110,8 @@ div label{
   padding: 10px;
   border-radius: 4px;
   width: 300px;
+  position: absolute;
+  top: 0;
 }
 
 .div-loader{ 

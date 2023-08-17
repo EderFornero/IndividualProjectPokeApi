@@ -22,18 +22,18 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div data-testid="div-container-home">
       {!loading ? (
         allPokemons.length ? (
           <>
             <div className="filter-and-order">
-              <TypeFilter />
-              <AllOrders />
+              <TypeFilter data-testid="type-filter-container"/>
+              <AllOrders data-testid="pokemon-sort-container"/>
             </div>
-            <Cards />
+            <Cards data-testid="pokemon-card" />
           </>
         ) : (
-          <Loader />
+          <Loader data-testid='loading-spinner' />
         )
       ) : (
         <div className="there-are-not">

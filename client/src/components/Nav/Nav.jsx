@@ -20,11 +20,11 @@ function Nav() {
   const showCreate = location.pathname !== '/create'; 
 
   return (
-    <div className='div-contain-nav'>
+    <div className='div-contain-nav' data-testid="div-container-nav">
   
       <details className="dropdown-buttons"> 
-        <summary className="dropdown-summary">Menu</summary>
-          <div className="dropdown-content">
+        <summary className="dropdown-summary" data-testid="summary-tag-test">Menu</summary>
+          <div className="dropdown-content" data-testid="div-contain-home-create">
             {showHome && <Link to="/home"><Button>Home</Button></Link>}
             {showCreate && <Link to="/create"><Button>Create</Button></Link>}
           </div>
@@ -33,7 +33,7 @@ function Nav() {
 
       {showSearchBar && 
       <div className='div-search-nav'>
-      <SearchBar />
+      <SearchBar data-testid="search-bar"/>
       </div>
       }
     </div>

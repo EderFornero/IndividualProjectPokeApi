@@ -295,24 +295,26 @@ function CreatePokemon() {
       </form>
      
      
-      {/*error on create*/}
-      <div className='error-message-container'>
-      {
-       errorPokemon && 
-          <p className="error-message-create">Pokemon already exist </p>
-      }
-      </div>
+     
+    <div className='error-message-container'>
+       {/*error on create*/}
+        {
+         errorPokemon && 
+            <p className="error-message-create">Pokemon already exist </p>
+       }
+      
+       {/*after pokemon successfully created*/}
+       {
+        pokemonCreated && 
+         <>
+          <div className='div-loader'><div className='loader'></div></div>
+           <div className="success-message" id='success-element'>
+            Pokemon successfully created
+          </div>
+        </>
+        }
+    </div>
 
-      {/*after pokemon successfully created*/}
-      {
-      pokemonCreated && 
-      <>
-        <div className='div-loader'><div className='loader'></div></div>
-        <div className="success-message" id='success-element'>
-        Pokemon successfully created
-        </div>
-      </>
-      }
     </div>
   )
 }

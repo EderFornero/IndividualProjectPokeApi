@@ -1,7 +1,8 @@
 import React from "react";
+//router
 import { useNavigate } from "react-router-dom";
+//css
 import "./Welcome.css";
-import { Link } from "react-router-dom";
 
 function Welcome() {
 

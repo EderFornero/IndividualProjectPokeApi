@@ -48,7 +48,7 @@ const SearchBar = () => {
       type="text"
       value={listener}
       onChange={(e) => handleOnChange(e.target.value)}
-      placeholder="Search some Pokemon"
+      placeholder="Search by full Poke name"
     />
   </div>
   )

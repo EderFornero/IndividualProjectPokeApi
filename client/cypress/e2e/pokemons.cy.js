@@ -1,10 +1,34 @@
 /*global cy*/ 
 
 describe('Pokemons App', () => {
-  it('renders without crashing', () => {
+
+  beforeEach(() => {
     cy.visit("http://localhost:3000")
-    cy.contains("LET'S GO").click()
+  })
+
+  it('renders without crashing', () => {
+  
+    cy.intercept('GET', 'http://localhost:3001/type').as('getTypeData');
+
+    cy.contains("LET'S GO").click();
+
+    cy.url('http://localhost:3000/home')
+    cy.get('[data-testid="loading-spinner"]').should('not.exist'); 
+
+    cy.get('[data-testid="div-container-nav"]').should('exist'); 
+    cy.get('[data-testid="summary-tag-test"]').contains('Menu').click(); 
+    cy.get('[data-testid="div-contain-home-create"]').should('exist')
+    cy.get('[data-testid="div-contain-home-create"]').contains('Create').click(); 
+
+    cy.url('http://localhost:3000/create')
+    cy.get('[data-testid="div-contain-home-create"]').should('exist')
+    cy.get('[data-testid="div-contain-home-create"]').contains('Home').click();
+
+    cy.get('[data-testid="div-container-nav"]').should('exist'); 
+    cy.get('[data-testid="summary-tag-test"]').contains('Menu').click();
+
+   
     }
   )
-  
+
 });
