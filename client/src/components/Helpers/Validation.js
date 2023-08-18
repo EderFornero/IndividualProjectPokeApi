@@ -4,8 +4,8 @@ const validation = (pokemon) => {
   //validate name
   if(!pokemon.name || pokemon.name.trim() === ""){ 
     errors.name = "Must be a name";
-  }else if(!/^[a-zA-Z]{1,20}$/.test(pokemon.name)){ 
-    errors.name = "The name must contain only letters without spaces and have a maximum of 20 characters";
+  }else if(!/^[a-z]{1,20}$/.test(pokemon.name)){ 
+    errors.name = "The name must contain only lowercase letters without spaces and have a maximum of 20 characters";
   }
 
   if(!pokemon.image){

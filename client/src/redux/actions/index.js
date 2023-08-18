@@ -6,13 +6,18 @@ import {GET_POKEMON, GET_POKEMON_NAME, GET_DETAIL, GET_TYPES, SET_ORDER, SET_FIL
 //get all pokemons
 export const getPokemons = () => {
   return async function(dispatch){
-    const {data} = await axios("/pokemon") //get pokemons from backend
-    return dispatch({
-      //select type
-      type: GET_POKEMON,
-      //response with all pokemons
-      payload: data
-    })
+    try {
+      const {data} = await axios("/pokemon") 
+      return dispatch({
+        //select type
+        type: GET_POKEMON,
+        //response with all pokemons
+        payload: data
+      })
+    } catch (error) {
+      return {error: error.message}
+    }
+   
   }
 }; 
 
@@ -60,7 +65,7 @@ export const getDetail = (id, setIsValid) => {
       //set false state & throw error
       //then handle it in detail view/page
       setIsValid(false);
-      console.log(error.message);
+      return {error: error.message}
     }
   }
 }
@@ -76,7 +81,7 @@ export const getTypes = () => {
         payload: data
       })
     } catch (error) {
-      console.log(error.message);
+      return {error: error.message}
     }
   }
 }
@@ -92,7 +97,7 @@ export function createPokemon(newPokemon){
         payload: data.new_pokemon
       })
     } catch (error) {
-      console.log("Error response data:", error.response.data);
+      throw Error({error: error.response.data})
     }
   }
 }

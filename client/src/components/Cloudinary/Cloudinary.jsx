@@ -41,7 +41,6 @@ export const Cloudinary = () => {
         },
         (error, result) => {
           if (!error && result && result.event === 'success') {
-            console.log(result);
             setUploadedImage(result.info.secure_url);
             dispatch(setImage(result.info.secure_url)); 
           }
