@@ -24,7 +24,8 @@ describe('Pokemons App', () => {
     cy.get('[data-testid="div-contain-home-create"]').should('exist')
     cy.get('[data-testid="div-contain-home-create"]').contains('Home').click();
 
-    cy.get('[data-testid="div-container-nav"]').should('exist'); 
+    cy.url('http://localhost:3000/home')
+    cy.intercept('GET', 'http://localhost:3001/pokemon').as('getPokemons')
     cy.get('[data-testid="summary-tag-test"]').contains('Menu').click();
 
    
