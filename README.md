@@ -5,6 +5,7 @@
   <img align="left" alt="Victor's LinkdeIN" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />
 </a>
 
+
 This is a project focused on exploring and visualizing information about Pokémon. Below, you'll find an overview of the project and the different stages we've completed.
 
 ## Description
