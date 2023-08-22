@@ -29,8 +29,6 @@ Pagination allows you to navigate through search results easily and in an organi
 
 Unleash your creativity and design your custom Pokémon using our creation feature!
 
+## Contact
 
-
-<a href="https://www.linkedin.com/in/eder-fornero/" target="_blank">
-  <img align="left" alt="Victor's LinkdeIN" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />
-</a>
+If you have any questions or suggestions, feel free to get in touch with me via LinkedIn: [Eder Fornero](https://www.linkedin.com/in/eder-fornero/).
