@@ -13,4 +13,4 @@ PokeMystic is an application that allows you to explore and search for informati
 
 ## Looks like
 
--Home Page [![image.png](https://i.postimg.cc/YS84msGC/image.png)](https://postimg.cc/VSrsx4Wx)
+- Home Page [![image.png](https://i.postimg.cc/YS84msGC/image.png)](https://postimg.cc/VSrsx4Wx)
