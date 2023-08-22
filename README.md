@@ -19,8 +19,15 @@ Here you can see the PokeMystic homepage, where you can start exploring the exte
 
 Use filters and sorting options to find Pokémon according to your preferences.
 
+### Pagination
+[![image.png](https://i.postimg.cc/ydPwK0b5/image.png)](https://postimg.cc/9RDxtwVt)
 
+Pagination allows you to navigate through search results easily and in an organized manner.
 
+### Pokémon Creation
+[![image.png](https://i.postimg.cc/FH3CmjfZ/image.png)](https://postimg.cc/mPZyy1yz)
+
+Unleash your creativity and design your custom Pokémon using our creation feature!
 
 
 
