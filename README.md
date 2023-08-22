@@ -11,7 +11,12 @@ PokeMystic is an application that allows you to explore and search for informati
 
 - Home Page [![image.png](https://i.postimg.cc/YS84msGC/image.png)](https://postimg.cc/VSrsx4Wx)
 
+Here you can see the PokeMystic homepage, where you can start exploring the extensive collection of Pokémon.
 
+### Filters and Sorting
+- Filters and Sorting [![image.png](https://i.postimg.cc/T1jhfN6x/image.png)](https://postimg.cc/N2MQx4FC) [![image.png](https://i.postimg.cc/LsZ9mQtW/image.png)](https://postimg.cc/zL8ZjjPw)
+
+Use filters and sorting options to find Pokémon according to your preferences.
 
 
 
