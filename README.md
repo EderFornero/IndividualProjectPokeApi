@@ -29,6 +29,13 @@ Pagination allows you to navigate through search results easily and in an organi
 
 Unleash your creativity and design your custom Pokémon using our creation feature!
 
+## Installation
+
+1. Clone this repository: `git clone https://github.com/YourUsername/RepositoryName.git`
+2. Navigate to the project directory: `cd RepositoryName`
+3. Install dependencies: `npm install`
+4. Start the application: `npm start`
+
 ## Contact
 
 If you have any questions or suggestions, feel free to get in touch with me via LinkedIn: [Eder Fornero](https://www.linkedin.com/in/eder-fornero/).
