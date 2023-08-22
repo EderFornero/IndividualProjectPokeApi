@@ -1,4 +1,4 @@
-# Welcome to PokeMysctic! <img src="https://media.tenor.com/74l5y1hUdtwAAAAj/pokemon.gif" width="30px">
+# Welcome to PokeMystic! <img src="https://media.tenor.com/74l5y1hUdtwAAAAj/pokemon.gif" width="30px">
 # I'm [Eder!](https://github.com/EderFornero)
 
 This is a project focused on exploring and visualizing information about Pokémon. Below, you'll find an overview of the project and the different stages we've completed.
